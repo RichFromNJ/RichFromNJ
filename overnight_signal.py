@@ -26,8 +26,8 @@ from dataclasses import dataclass
 from zoneinfo import ZoneInfo
 
 ET = ZoneInfo("America/New_York")
-LOOKBACK = 120          # completed trading days used for the rule indicators
-MIN_BARS = 100          # fewer completed bars than this -> NO TRADE
+LOOKBACK = 80           # completed trading days used for the rule indicators
+MIN_BARS = 60           # fewer completed bars than this -> NO TRADE
 BUDGET = 245.0          # premium budget per trade, dollars
 RSI_PERIOD, DMI_PERIOD, TRIX_PERIOD = 2, 5, 3
 ADX_MAX, TRIX_LIMIT, RSI_HIGH, RSI_LOW = 60.0, 0.60, 85.0, 15.0

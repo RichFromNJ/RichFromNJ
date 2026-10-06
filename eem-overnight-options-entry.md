@@ -31,12 +31,12 @@ PRE-CHECKS (skip the trade if any fail)
 3. If this account holds any open EEM option position, NO TRADE. Report it.
 
 DATA
-1. Pull EEM daily bars (regular hours) for the last 120 completed trading days.
+1. Pull EEM daily bars (regular hours) for the last 80 completed trading days.
 2. Remove every placeholder bar: any bar marked interpolated. These are gap-fill bars with no real trading (open, high, low and close all equal, zero volume). Never use them in any calculation.
 3. If yesterday's completed bar is missing or was a placeholder, NO TRADE. Report it.
 4. Build today's bar from today's open, today's high and low so far, and the current last price as the close.
 5. If the historical data already contains a bar dated today, REPLACE it with the bar from step 4. Never count today twice.
-6. If fewer than 100 completed bars remain, or today's open or the last price is missing, NO TRADE.
+6. If fewer than 60 completed bars remain, or today's open or the last price is missing, NO TRADE.
 
 INDICATORS
 Compute every indicator with a script (for example, Python in the shell), not by hand. Use the bar series from DATA, ending with today's bar.
