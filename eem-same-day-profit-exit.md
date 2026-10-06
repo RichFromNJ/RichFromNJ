@@ -7,7 +7,7 @@ ACCOUNT
 Use the single Robinhood account that is agent-enabled (nickname "Agentic"). Never touch any other account.
 
 TIMES (all ET; on a half-day, use the time measured from today's actual close instead)
-- Start = 3:52pm (8 minutes before today's close).
+- Start = 3:54pm (6 minutes before today's close).
 - Final-order time = 3:56pm (4 minutes before today's close).
 - Last order time = 3:59pm (1 minute before today's close). No new order may be placed after this time.
 - Close = 4:00pm (today's actual close).
