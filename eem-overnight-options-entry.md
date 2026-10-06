@@ -1,4 +1,4 @@
-You are executing a rules-based overnight options trade on EEM in my Robinhood account. Follow these instructions exactly. Do not improvise, do not ask questions, and if any step fails, any data is missing, or anything is ambiguous, place NO trade and report why.
+You are executing a rules-based overnight options trade on EEM in my Robinhood account. Follow these instructions exactly. Do not improvise, do not ask questions, and if any step fails, any data is missing, or anything is ambiguous, place NO trade and report why. The only judgment call you may make is the OTM-or-ITM choice described in STRIKE.
 
 AUTHORIZATION
 I pre-authorize you to review, place, cancel, and re-place the EEM option orders described in this prompt, including the final limit order at the ask, without asking me first. This authorization covers nothing else.
@@ -7,8 +7,11 @@ ACCOUNT
 Use the single Robinhood account that is agent-enabled (nickname "Agentic"). Never touch any other account.
 
 BUDGET
-- Budget = $245 of premium for today's trade, counting every contract already filled today in the chosen contract.
-- Hard cap: total premium plus fees must never exceed $250.
+The limits depend on whether the contract is out of the money (OTM) or in the money (ITM). STRIKE defines both. Both are daily limits.
+- OTM: premium budget = $130. Hard cap: total OTM premium plus fees today must never exceed $135.
+- ITM: premium budget = $245. Hard cap: total ITM premium plus fees today must never exceed $250.
+- Spent today = sum of (filled quantity × fill price × 100) for every EEM BUY TO OPEN fill today of the chosen type in this account, including fills from earlier runs or orders.
+- One type per day: once an OTM purchase has filled today, no ITM purchase may be made today. Once an ITM purchase has filled today, no OTM purchase may be made today.
 
 TIMES (all ET; on a half-day, use the earlier time in each pair)
 - Final-order time = 3:48pm, or 10 minutes before today's close.
@@ -25,10 +28,11 @@ PRE-CHECKS (skip the trade if any fail)
      c. If the order filled before the cancel took effect, NO TRADE. Report the fill.
    - If an open EEM BUY TO OPEN order exists with SOME contracts filled (a "partial"):
      a. Cancel the unfilled remainder, then confirm the cancel and read the final filled quantity and average fill price.
-     b. Record the contract and the cost filled so far (filled quantity × average fill price × 100).
+     b. Record the contract and classify it as OTM or ITM as described in pre-check 4.
      c. Skip pre-check 3, DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE.
-     d. Go straight to ORDER, step 4 (top-up loop), for that same contract with the cost filled so far.
+     d. Go straight to ORDER, step 4 (top-up loop), for that same contract, using the budget for its type.
 3. If this account holds any open EEM option position, NO TRADE. Report it.
+4. Find every EEM BUY TO OPEN order that filled today in this account, whoever placed it. Classify each fill as OTM or ITM by comparing its strike with EEM's price at the time of the fill (use the 5-minute bar that contains the fill time). If that can't be determined, treat it as OTM. If any fills exist, today's type is locked to their type. If fills of both types exist, NO TRADE. Report what you found.
 
 DATA
 1. Pull EEM daily bars (regular hours) for the last 80 completed trading days.
@@ -62,12 +66,18 @@ EXPIRATION
 - Report whether you used the target or the fallback.
 
 STRIKE
-- CALLS: take the lowest strike strictly above the current price. If it is ≤ $0.30 above the price, buy it. Otherwise, buy the highest strike at or below the price (in the money).
-- PUTS: take the highest strike strictly below the current price. If it is ≤ $0.30 below the price, buy it. Otherwise, buy the lowest strike at or above the price (in the money).
-- If the chosen contract has no bid or no ask, NO TRADE.
+1. Definitions. CALLS: a strike above the current price is OTM; a strike at or below the price is ITM. PUTS: a strike below the current price is OTM; a strike at or above the price is ITM.
+2. Candidates: the nearest OTM strike and the nearest ITM strike, for the signal's option type and the chosen expiration. Only these two contracts may be bought. If pre-check 4 locked today's type, only the candidate of that type may be bought.
+3. Remove a candidate if it has no bid or no ask, or if its budget can't buy one contract at the ask (OTM: ask × 100 > $130; ITM: ask × 100 > $245). If no candidate is left, NO TRADE. If one is left, choose it.
+4. If both are left, choose OTM or ITM using your judgment. Weigh:
+   - How far the OTM strike is from the current price. The closer it is, the more it behaves like the ITM contract. For reference, the earlier rule chose OTM only when it was within $0.30.
+   - Each contract's bid-ask spread as a percent of its mid. A wide spread costs more to get in and out.
+   - Each contract's open interest and today's volume. A contract that barely trades may not fill.
+   - Each contract's delta, and how many contracts its budget buys.
+5. Report both candidates (strike, bid, ask, spread, open interest, volume, delta), which one you chose, and a short reason.
 
 SIZE
-- Get the option quote. Quantity = floor(245 / (ask × 100)). If quantity is 0, NO TRADE.
+- Get the chosen contract's quote. Quantity = floor((premium budget − spent today) / (ask × 100)), using the budget for the chosen type. If quantity is 0, NO TRADE.
 
 ORDER
 If ORDER begins at or after the final-order time, skip steps 1–4 and go straight to step 5.
@@ -78,20 +88,20 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
 4. Limit top-up loop. Repeat steps a–g until the budget is used up or the final-order time is reached:
    a. If an order is open, wait 3 minutes or until the final-order time, whichever comes first. Then cancel it, confirm the cancel succeeded, and read the final filled quantity and fill price.
    b. If the cancel failed because the order filled, update the totals and continue to step c.
-   c. Cost filled so far = sum of (filled quantity × fill price × 100) for every fill today in this contract.
+   c. Recalculate spent today.
    d. If it is now the final-order time or later, stop the loop and go to step 5.
-   e. Re-quote the same contract. If it has no ask, stop the loop and report. Next quantity = floor((245 − cost filled so far) / (ask × 100)).
+   e. Re-quote the same contract. If it has no ask, stop the loop and report. Next quantity = floor((premium budget − spent today) / (ask × 100)).
    f. If the next quantity is 0, the budget is used up. Stop and report.
    g. Review a BUY TO OPEN limit order for the next quantity at the current ask (same warning rule as step 2). Then place it, and go back to step a.
 5. Final limit order, at the final-order time. Use a LIMIT order, never a market order: Robinhood can cap the size of market option orders (OPTION_MARKET_OVER_CONTRACT_LIMIT, which allowed only 1 contract), and limit orders avoid that cap.
-   a. Cancel any open buy order, confirm the cancel, and update the cost filled so far.
+   a. Cancel any open buy order, confirm the cancel, and recalculate spent today.
    b. Re-quote the contract. If it has no ask, place nothing and report.
-   c. Final price = ask + 0.05. Final quantity = floor((245 − cost filled so far) / (final price × 100)).
+   c. Final price = ask + 0.05. Final quantity = floor((premium budget − spent today) / (final price × 100)).
    d. If the final quantity is 0, place nothing and report.
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
    f. At the purchase deadline, if any part of it is still open, cancel it, confirm the cancel, and report the final fills.
 6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.05, never higher.
-7. Never place a MARKET order. Never exceed the $250 hard cap. Never sell to open. Never trade anything except EEM options. Never buy after the purchase deadline.
+7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never buy after the purchase deadline.
 
 REPORT
 Summarize:
@@ -100,7 +110,9 @@ Summarize:
 - yesterday's ADX, +DI, −DI, and where ADX sat relative to the DI lines
 - TRIX
 - which rule decided
-- expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent
+- any EEM purchases found by pre-check 4 and the type they locked
+- both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
+- expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, which limit applied ($135 OTM or $250 ITM), budget left unspent
 - how many times the limit order was re-placed
 - whether this run started by cancelling an unfilled order or resuming a partial
 
