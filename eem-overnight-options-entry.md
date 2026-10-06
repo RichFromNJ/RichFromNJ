@@ -16,7 +16,7 @@ The limits depend on whether the contract is out of the money (OTM) or in the mo
 TIMES (all ET; on a half-day, use the earlier time in each pair)
 - Final-order time = 3:48pm, or 10 minutes before today's close.
 - Purchase deadline = 3:49pm, or 9 minutes before today's close.
-- No buy order may be placed or left open after the purchase deadline.
+- No new buy order may be placed after the purchase deadline. The final limit order from ORDER step 5 is the only buy order allowed to stay open after it.
 
 HOLIDAYS
 NYSE full-day closures:
@@ -105,9 +105,9 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
    c. Final price = ask + 0.02. Final quantity = floor((premium budget − spent today) / (final price × 100)).
    d. If the final quantity is 0, place nothing and report.
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
-   f. At the purchase deadline, if any part of it is still open, cancel it, confirm the cancel, and report the final fills.
+   f. Do not cancel it. Leave it working until it fills or expires at the end of the trading day. Check it once a minute until it is fully filled or no longer open, then report the final fills.
 6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.02, never higher.
-7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never buy after the purchase deadline.
+7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never place a new buy order after the purchase deadline.
 
 REPORT
 Summarize:
