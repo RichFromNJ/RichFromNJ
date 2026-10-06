@@ -88,8 +88,8 @@ SIZE
 ORDER
 If ORDER begins at or after the final-order time, skip steps 1–4 and go straight to step 5.
 
-1. Review a BUY TO OPEN limit order for the quantity from SIZE. Price = mid, rounded DOWN to a valid tick. Good for day.
-2. If any review shows a warning or alert, place nothing further and report the warning verbatim. Exception: at step 5, a warning only about the bid-ask spread, or about the limit price being above the mid or at or above the ask, is pre-acknowledged.
+1. Review a BUY TO OPEN limit order for the quantity from SIZE. Price = halfway between the mid and the ask, rounded DOWN to a valid tick. Good for day.
+2. If any review shows a warning or alert, place nothing further and report the warning verbatim. Exception: at steps 1, 4g and 5, a warning only about the bid-ask spread, or about the limit price being above the mid or at or above the ask, is pre-acknowledged.
 3. Place the order.
 4. Limit top-up loop. Repeat steps a–g until the budget is used up or the final-order time is reached:
    a. If an order is open, wait 3 minutes or until the final-order time, whichever comes first. Then cancel it, confirm the cancel succeeded, and read the final filled quantity and fill price.
