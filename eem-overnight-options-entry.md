@@ -102,11 +102,11 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
 5. Final limit order, at the final-order time. Use a LIMIT order, never a market order: Robinhood can cap the size of market option orders (OPTION_MARKET_OVER_CONTRACT_LIMIT, which allowed only 1 contract), and limit orders avoid that cap.
    a. Cancel any open buy order, confirm the cancel, and recalculate spent today.
    b. Re-quote the contract. If it has no ask, place nothing and report.
-   c. Final price = ask + 0.05. Final quantity = floor((premium budget − spent today) / (final price × 100)).
+   c. Final price = ask + 0.02. Final quantity = floor((premium budget − spent today) / (final price × 100)).
    d. If the final quantity is 0, place nothing and report.
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
    f. At the purchase deadline, if any part of it is still open, cancel it, confirm the cancel, and report the final fills.
-6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.05, never higher.
+6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.02, never higher.
 7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never buy after the purchase deadline.
 
 REPORT
