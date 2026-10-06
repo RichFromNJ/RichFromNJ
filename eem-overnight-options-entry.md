@@ -36,7 +36,7 @@ PRE-CHECKS (skip the trade if any fail)
      a. Cancel the unfilled remainder, then confirm the cancel and read the final filled quantity and average fill price.
      b. Record the contract and classify it as OTM or ITM as described in pre-check 4.
      c. Skip pre-check 3, DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE.
-     d. Go straight to ORDER, step 4 (top-up loop), for that same contract, using the budget for its type.
+     d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract, using the budget for its type.
 3. If this account holds any open EEM option position, NO TRADE. Report it.
 4. Find every EEM BUY TO OPEN order that filled today in this account, whoever placed it. Classify each fill as OTM or ITM by comparing its strike with EEM's price at the time of the fill (use the 5-minute bar that contains the fill time). If that can't be determined, treat it as OTM. If any fills exist, today's type is locked to their type. If fills of both types exist, NO TRADE. Report what you found.
 
@@ -89,24 +89,24 @@ ORDER
 If ORDER begins at or after the final-order time, skip steps 1–4 and go straight to step 5.
 
 1. Review a BUY TO OPEN limit order for the quantity from SIZE. Price = halfway between the mid and the ask, rounded DOWN to a valid tick. Good for day.
-2. If any review shows a warning or alert, place nothing further and report the warning verbatim. Exception: at steps 1, 4g and 5, a warning only about the bid-ask spread, or about the limit price being above the mid or at or above the ask, is pre-acknowledged.
+2. If any review shows a warning or alert, place nothing further and report the warning verbatim. Exception: at steps 1, 4 and 5, a warning only about the bid-ask spread, or about the limit price being above the mid or at or above the ask, is pre-acknowledged.
 3. Place the order.
-4. Limit top-up loop. Repeat steps a–g until the budget is used up or the final-order time is reached:
-   a. If an order is open, wait 3 minutes or until the final-order time, whichever comes first. Then cancel it, confirm the cancel succeeded, and read the final filled quantity and fill price.
-   b. If the cancel failed because the order filled, update the totals and continue to step c.
-   c. Recalculate spent today.
-   d. If it is now the final-order time or later, stop the loop and go to step 5.
-   e. Re-quote the same contract. If it has no ask, stop the loop and report. Next quantity = floor((premium budget − spent today) / (ask × 100)).
-   f. If the next quantity is 0, the budget is used up. Stop and report.
-   g. Review a BUY TO OPEN limit order for the next quantity at the current ask (same warning rule as step 2). Then place it, and go back to step a.
-5. Final limit order, at the final-order time. Use a LIMIT order, never a market order: Robinhood can cap the size of market option orders (OPTION_MARKET_OVER_CONTRACT_LIMIT, which allowed only 1 contract), and limit orders avoid that cap.
-   a. Cancel any open buy order, confirm the cancel, and recalculate spent today.
+4. One attempt at the ask:
+   a. If an order is open, wait until it fully fills, 3 minutes pass, or the final-order time arrives, whichever comes first. Then cancel any unfilled part, confirm the cancel succeeded, and read the final filled quantity and fill price. If the cancel failed because the order filled, update the totals.
+   b. Recalculate spent today.
+   c. If it is now the final-order time or later, go to step 5.
+   d. Re-quote the same contract. If it has no ask, go to step 5. Next quantity = floor((premium budget − spent today) / (ask × 100)).
+   e. If the next quantity is 0, the budget is used up. Stop and report.
+   f. Review a BUY TO OPEN limit order for the next quantity at the current ask (same warning rule as step 2). Then place it.
+   g. Wait until it fully fills, 3 minutes pass, or the final-order time arrives, whichever comes first. Then go to step 5. Never place a second order at the ask.
+5. Final limit order, after the attempt at the ask or at the final-order time, whichever comes first. Use a LIMIT order, never a market order: Robinhood can cap the size of market option orders (OPTION_MARKET_OVER_CONTRACT_LIMIT, which allowed only 1 contract), and limit orders avoid that cap.
+   a. Cancel any open buy order, confirm the cancel, and recalculate spent today. If the cancel failed because the order filled, update the totals.
    b. Re-quote the contract. If it has no ask, place nothing and report.
-   c. Final price = ask + 0.02. Final quantity = floor((premium budget − spent today) / (final price × 100)).
+   c. Final price = ask + 0.03. Final quantity = floor((premium budget − spent today) / (final price × 100)).
    d. If the final quantity is 0, place nothing and report.
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
    f. Do not cancel it. Leave it working until it fills or expires at the end of the trading day. Check it once a minute until it is fully filled or no longer open, then report the final fills.
-6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.02, never higher.
+6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.03, never higher.
 7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never place a new buy order after the purchase deadline.
 
 REPORT
@@ -119,7 +119,7 @@ Summarize:
 - any EEM purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
 - expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, which limit applied ($135 OTM or $250 ITM), budget left unspent
-- how many times the limit order was re-placed
+- the price and result of each order: halfway, ask, and final (ask + 0.03)
 - whether this run started by cancelling an unfilled order or resuming a partial
 
 If the run resumed a partial, the indicator fields don't apply; say so. Otherwise, report the exact reason for no trade.
