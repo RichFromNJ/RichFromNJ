@@ -57,6 +57,14 @@ class DataChecks(unittest.TestCase):
         with self.assertRaisesRegex(sig.DataError, "yesterday"):
             run("robinhood", "eem_robinhood_2026-10-05.json", dt.date(2026, 10, 6), 68.8, 69, 68.5, 68.9)
 
+    def test_no_trade_day_before_a_holiday(self):
+        self.assertTrue(sig.holiday_tomorrow(dt.date(2026, 11, 25)))   # Thanksgiving
+        self.assertTrue(sig.holiday_tomorrow(dt.date(2026, 12, 31)))   # New Year's Day
+        self.assertTrue(sig.holiday_tomorrow(dt.date(2027, 3, 25)))    # Good Friday
+        self.assertFalse(sig.holiday_tomorrow(MON))
+        with self.assertRaisesRegex(sig.DataError, "holiday list"):
+            sig.holiday_tomorrow(dt.date(2028, 1, 3))
+
     def test_previous_trading_day_skips_weekend_and_holiday(self):
         self.assertEqual(sig.previous_trading_day(MON), dt.date(2026, 10, 2))
         self.assertEqual(sig.previous_trading_day(dt.date(2026, 9, 8)), dt.date(2026, 9, 4))

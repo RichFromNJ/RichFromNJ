@@ -95,6 +95,16 @@ def load_tradingview(path):
     return bars, []
 
 
+HOLIDAYS_THROUGH = 2027  # last year NYSE_HOLIDAYS covers
+
+
+def holiday_tomorrow(day):
+    """Pre-check 1: no new position the day before a full-day market holiday."""
+    if day.year > HOLIDAYS_THROUGH:
+        raise DataError(f"holiday list ends {HOLIDAYS_THROUGH}; update NYSE_HOLIDAYS")
+    return day + dt.timedelta(days=1) in NYSE_HOLIDAYS
+
+
 def previous_trading_day(day):
     day -= dt.timedelta(days=1)
     while day.weekday() >= 5 or day in NYSE_HOLIDAYS:
@@ -332,6 +342,8 @@ def run_signal(args):
     try:
         if today_date.weekday() > 3:
             raise DataError("today is not Mon-Thu")
+        if holiday_tomorrow(today_date):
+            raise DataError("the market is closed tomorrow for a holiday")
         series = build_series(history, today)
         out.update(decide(series))
         out["context"] = context_levels(history, today)

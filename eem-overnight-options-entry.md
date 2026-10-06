@@ -18,8 +18,14 @@ TIMES (all ET; on a half-day, use the earlier time in each pair)
 - Purchase deadline = 3:49pm, or 9 minutes before today's close.
 - No buy order may be placed or left open after the purchase deadline.
 
+HOLIDAYS
+NYSE full-day closures:
+- 2026: Thu Nov 26, Fri Dec 25.
+- 2027: Fri Jan 1, Mon Jan 18, Mon Feb 15, Fri Mar 26, Mon May 31, Fri Jun 18, Mon Jul 5, Mon Sep 6, Thu Nov 25, Fri Dec 24.
+This list runs through December 31, 2027. From January 1, 2028, NO TRADE until the list is updated.
+
 PRE-CHECKS (skip the trade if any fail)
-1. Today must be Mon–Thu and the market must be open right now. If it is already past the purchase deadline, NO TRADE.
+1. Today must be Mon–Thu and the market must be open right now. If it is already past the purchase deadline, NO TRADE. If the market is closed tomorrow for a holiday (see HOLIDAYS), NO TRADE.
 2. Check for open (unfilled or partially filled) EEM option orders in this account:
    - If any open EEM SELL order exists, NO TRADE. Report it.
    - If an open EEM BUY TO OPEN order exists with ZERO contracts filled:
