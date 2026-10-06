@@ -3,7 +3,9 @@
 
 Implements the DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE
 sections of eem-overnight-options-entry.md so every run uses the same tested
-math instead of code written on the fly.
+math instead of code written on the fly. For STRIKE it lists the two
+candidates (nearest OTM and nearest ITM); choosing between them is the one
+judgment call the prompt leaves to the routine.
 
 Daily bars are read from the JSON a connector returned, saved to a file:
   - Robinhood get_equity_historicals   ({"data": {"results": [...]}})
@@ -14,7 +16,7 @@ Usage:
       --date 2026-10-05 --open 68.4669 --high 68.87 --low 68.3584 --last 68.705 \
       [--expirations 2026-10-07,2026-10-09]
   overnight_signal.py strike --signal PUTS --price 68.705 --strikes 68,69,70
-  overnight_signal.py size --ask 0.62
+  overnight_signal.py size --type ITM --ask 0.62 [--spent 0]
 """
 
 import argparse
@@ -28,10 +30,10 @@ from zoneinfo import ZoneInfo
 ET = ZoneInfo("America/New_York")
 LOOKBACK = 80           # completed trading days used for the rule indicators
 MIN_BARS = 60           # fewer completed bars than this -> NO TRADE
-BUDGET = 245.0          # premium budget per trade, dollars
 RSI_PERIOD, DMI_PERIOD, TRIX_PERIOD = 2, 5, 3
 ADX_MAX, TRIX_LIMIT, RSI_HIGH, RSI_LOW = 60.0, 0.60, 85.0, 15.0
-STRIKE_REACH = 0.30     # max distance to the first out-of-the-money strike
+# Daily limits by moneyness: (premium budget, hard cap including fees), dollars.
+LIMITS = {"OTM": (130.0, 135.0), "ITM": (245.0, 250.0)}
 
 # NYSE full-day closures, used to find "yesterday's" trading day.
 NYSE_HOLIDAYS = {
@@ -285,26 +287,31 @@ def choose_expiration(today, expirations):
     return (later[0], "fallback") if later else None
 
 
-def choose_strike(signal, price, strikes):
-    """STRIKE section. Returns the strike or None (NO TRADE)."""
-    strikes = sorted(set(strikes))
+def moneyness(signal, strike, price):
+    """STRIKE definitions: calls are OTM above the price, puts are OTM below
+    it. A strike exactly at the price counts as ITM."""
     if signal == "CALLS":
-        otm = [s for s in strikes if s > price]
-        if otm and otm[0] - price <= STRIKE_REACH + 1e-9:
-            return otm[0]
-        itm = [s for s in strikes if s <= price]
-        return itm[-1] if itm else None
-    if signal == "PUTS":
-        otm = [s for s in strikes if s < price]
-        if otm and price - otm[-1] <= STRIKE_REACH + 1e-9:
-            return otm[-1]
-        itm = [s for s in strikes if s >= price]
-        return itm[0] if itm else None
-    return None
+        return "OTM" if strike > price else "ITM"
+    return "OTM" if strike < price else "ITM"
 
 
-def quantity(ask, budget=BUDGET):
-    return math.floor(budget / (ask * 100) + 1e-9) if ask > 0 else 0
+def strike_candidates(signal, price, strikes):
+    """STRIKE step 2: the nearest OTM and nearest ITM strikes (None if absent)."""
+    strikes = sorted(set(strikes))
+    otm = [s for s in strikes if moneyness(signal, s, price) == "OTM"]
+    itm = [s for s in strikes if moneyness(signal, s, price) == "ITM"]
+    if signal == "CALLS":
+        return {"OTM": otm[0] if otm else None, "ITM": itm[-1] if itm else None}
+    return {"OTM": otm[-1] if otm else None, "ITM": itm[0] if itm else None}
+
+
+def quantity(ask, kind, spent=0.0):
+    """SIZE: contracts the remaining OTM or ITM premium budget buys at `ask`.
+    Zero also means the candidate is removed in STRIKE step 3."""
+    budget = LIMITS[kind][0] - spent
+    if ask <= 0 or budget <= 0:
+        return 0
+    return math.floor(budget / (ask * 100) + 1e-9)
 
 
 # --------------------------------------------------------------------- CLI
@@ -370,15 +377,23 @@ def main(argv=None):
     k.add_argument("--price", type=float, required=True)
     k.add_argument("--strikes", required=True, help="comma-separated strikes")
     z = sub.add_parser("size")
+    z.add_argument("--type", choices=["OTM", "ITM"], required=True)
     z.add_argument("--ask", type=float, required=True)
+    z.add_argument("--spent", type=float, default=0.0, help="premium already spent today on this type")
     args = p.parse_args(argv)
     if args.cmd == "signal":
         run_signal(args)
     elif args.cmd == "strike":
-        strike = choose_strike(args.signal, args.price, [float(x) for x in args.strikes.split(",")])
-        print("NO TRADE: no eligible strike" if strike is None else f"strike {strike:g}")
+        cands = strike_candidates(args.signal, args.price, [float(x) for x in args.strikes.split(",")])
+        for kind, strike in cands.items():
+            if strike is None:
+                print(f"{kind}: none listed")
+            else:
+                print(f"{kind}: strike {strike:g}  ({abs(strike - args.price):.2f} from the price)")
     else:
-        print(f"quantity {quantity(args.ask)}")
+        budget, cap = LIMITS[args.type]
+        print(f"quantity {quantity(args.ask, args.type, args.spent)}  "
+              f"({args.type} budget ${budget:g}, cap ${cap:g}, spent ${args.spent:g})")
 
 
 if __name__ == "__main__":

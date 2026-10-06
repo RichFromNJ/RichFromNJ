@@ -71,17 +71,33 @@ class Selection(unittest.TestCase):
         self.assertIsNone(sig.choose_expiration(wed, [dt.date(2026, 10, 13)]))
         self.assertIsNone(sig.choose_expiration(dt.date(2026, 10, 9), listed))
 
-    def test_strike(self):
+    def test_strike_candidates(self):
         eem = [float(s) for s in range(52, 84)]
-        self.assertEqual(sig.choose_strike("PUTS", 68.705, eem), 69)
-        self.assertEqual(sig.choose_strike("PUTS", 68.25, eem), 68)
-        self.assertEqual(sig.choose_strike("CALLS", 68.70, eem), 69)
-        self.assertEqual(sig.choose_strike("CALLS", 68.60, eem), 68)
+        self.assertEqual(sig.strike_candidates("PUTS", 68.705, eem), {"OTM": 68, "ITM": 69})
+        self.assertEqual(sig.strike_candidates("CALLS", 68.705, eem), {"OTM": 69, "ITM": 68})
+        # A strike exactly at the price counts as ITM.
+        self.assertEqual(sig.strike_candidates("PUTS", 68.0, eem), {"OTM": 67, "ITM": 68})
+        self.assertEqual(sig.strike_candidates("CALLS", 68.0, eem), {"OTM": 69, "ITM": 68})
+        self.assertEqual(sig.strike_candidates("CALLS", 90.0, eem), {"OTM": None, "ITM": 83})
 
-    def test_size(self):
-        self.assertEqual(sig.quantity(0.62), 3)
-        self.assertEqual(sig.quantity(2.45), 1)
-        self.assertEqual(sig.quantity(2.46), 0)
+    def test_moneyness(self):
+        self.assertEqual(sig.moneyness("PUTS", 68, 68.705), "OTM")
+        self.assertEqual(sig.moneyness("PUTS", 69, 68.705), "ITM")
+        self.assertEqual(sig.moneyness("CALLS", 69, 68.705), "OTM")
+        self.assertEqual(sig.moneyness("CALLS", 68, 68.705), "ITM")
+
+    def test_size_by_type(self):
+        self.assertEqual(sig.quantity(0.62, "ITM"), 3)
+        self.assertEqual(sig.quantity(0.62, "OTM"), 2)
+        self.assertEqual(sig.quantity(2.45, "ITM"), 1)
+        self.assertEqual(sig.quantity(2.46, "ITM"), 0)
+        self.assertEqual(sig.quantity(1.30, "OTM"), 1)
+        self.assertEqual(sig.quantity(1.31, "OTM"), 0)
+
+    def test_size_counts_spend_already_made_today(self):
+        self.assertEqual(sig.quantity(0.58, "ITM", spent=186.0), 1)
+        self.assertEqual(sig.quantity(0.40, "OTM", spent=130.0), 0)
+        self.assertEqual(sig.quantity(0.40, "OTM", spent=150.0), 0)
 
     def test_adx_on_a_di_line_is_not_between(self):
         self.assertEqual(sig.adx_position(20.0, 20.0, 30.0), "on a DI line")
