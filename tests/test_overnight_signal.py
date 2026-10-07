@@ -96,16 +96,16 @@ class Selection(unittest.TestCase):
 
     def test_size_by_type(self):
         self.assertEqual(sig.quantity(0.62, "ITM"), 3)
-        self.assertEqual(sig.quantity(0.62, "OTM"), 2)
+        self.assertEqual(sig.quantity(0.62, "OTM"), 3)
         self.assertEqual(sig.quantity(2.45, "ITM"), 1)
         self.assertEqual(sig.quantity(2.46, "ITM"), 0)
-        self.assertEqual(sig.quantity(1.30, "OTM"), 1)
-        self.assertEqual(sig.quantity(1.31, "OTM"), 0)
+        self.assertEqual(sig.quantity(2.45, "OTM"), 1)
+        self.assertEqual(sig.quantity(2.46, "OTM"), 0)
 
     def test_size_counts_spend_already_made_today(self):
         self.assertEqual(sig.quantity(0.58, "ITM", spent=186.0), 1)
-        self.assertEqual(sig.quantity(0.40, "OTM", spent=130.0), 0)
-        self.assertEqual(sig.quantity(0.40, "OTM", spent=150.0), 0)
+        self.assertEqual(sig.quantity(0.40, "OTM", spent=200.0), 1)
+        self.assertEqual(sig.quantity(0.40, "OTM", spent=245.0), 0)
 
     def test_adx_on_a_di_line_is_not_between(self):
         self.assertEqual(sig.adx_position(20.0, 20.0, 30.0), "on a DI line")

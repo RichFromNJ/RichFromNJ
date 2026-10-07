@@ -33,7 +33,8 @@ MIN_BARS = 60           # fewer completed bars than this -> NO TRADE
 RSI_PERIOD, DMI_PERIOD, TRIX_PERIOD = 2, 5, 3
 ADX_MAX, TRIX_LIMIT, RSI_HIGH, RSI_LOW = 60.0, 0.60, 85.0, 15.0
 # Daily limits by moneyness: (premium budget, hard cap including fees), dollars.
-LIMITS = {"OTM": (130.0, 135.0), "ITM": (245.0, 250.0)}
+# One budget applies to both.
+LIMITS = {"OTM": (245.0, 250.0), "ITM": (245.0, 250.0)}
 
 # NYSE full-day closures, used to find "yesterday's" trading day.
 NYSE_HOLIDAYS = {
