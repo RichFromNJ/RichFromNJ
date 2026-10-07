@@ -1,7 +1,7 @@
-You are executing a rules-based overnight options trade on SPY in my Robinhood account, confirmed by QQQ. Follow these instructions exactly. Do not improvise, do not ask questions, and if any step fails, any data is missing, or anything is ambiguous, place NO trade and report why. The only judgment call you may make is the OTM-or-ITM choice described in STRIKE.
+You are executing a rules-based overnight options trade on SPY in my Robinhood account. Follow these instructions exactly. Do not improvise, do not ask questions, and if any step fails, any data is missing, or anything is ambiguous, place NO trade and report why. The only judgment call you may make is the OTM-or-ITM choice described in STRIKE.
 
 AUTHORIZATION
-I pre-authorize you to review, place, cancel, and re-place the SPY option orders described in this prompt, including the final limit order at the ask, without asking me first. This authorization covers nothing else. QQQ is used only as a confirmation signal: never place, cancel, or modify any QQQ order.
+I pre-authorize you to review, place, cancel, and re-place the SPY option orders described in this prompt, including the final limit order at the ask, without asking me first. This authorization covers nothing else.
 
 ACCOUNT
 Use the single Robinhood account that is agent-enabled (nickname "Agentic"). Never touch any other account.
@@ -34,14 +34,13 @@ PRE-CHECKS (skip the trade if any fail)
    - If an open SPY BUY TO OPEN order exists with SOME contracts filled (a "partial"):
      a. Cancel the unfilled remainder, then confirm the cancel and read the final filled quantity and average fill price.
      b. Record the contract and classify it as OTM or ITM as described in pre-check 4.
-     c. Skip pre-check 3, DATA, INDICATORS, DECISION, QQQ CONFIRMATION, EXPIRATION, STRIKE and SIZE.
+     c. Skip pre-check 3, DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE.
      d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract.
 3. If this account holds any open SPY option position, NO TRADE. Report it.
 4. Find every SPY BUY TO OPEN order that filled today in this account, whoever placed it. Classify each fill as OTM or ITM by comparing its strike with SPY's price at the time of the fill (use the 5-minute bar that contains the fill time). If that can't be determined, treat it as OTM. If any fills exist, today's type is locked to their type. If fills of both types exist, NO TRADE. Report what you found.
 
 DATA
-Do every step below separately for SPY and for QQQ. If any step fails for either symbol, NO TRADE.
-1. Pull daily bars (regular hours) for the last 80 completed trading days.
+1. Pull SPY daily bars (regular hours) for the last 80 completed trading days.
 2. Remove every placeholder bar: any bar marked interpolated. These are gap-fill bars with no real trading (open, high, low and close all equal, zero volume). Never use them in any calculation.
 3. If yesterday's completed bar is missing or was a placeholder, NO TRADE. Report it.
 4. Build today's bar from today's open, today's high and low so far, and the current last price as the close.
@@ -49,14 +48,13 @@ Do every step below separately for SPY and for QQQ. If any step fails for either
 6. If fewer than 60 completed bars remain, or today's open or the last price is missing, NO TRADE.
 
 INDICATORS
-Compute every indicator with a script (for example, Python in the shell), not by hand. Compute them separately for SPY and for QQQ, each from its own bar series from DATA, ending with today's bar.
+Compute every indicator with a script (for example, Python in the shell), not by hand. Use the bar series from DATA, ending with today's bar.
 - RSI(2): Wilder smoothing, period 2. Seed with the simple average of the first 2 gains/losses.
 - ADX(5), +DI(5), -DI(5): standard Wilder method, period 5 for both DI and ADX smoothing.
 - TRIX(3): triple EMA (period 3, alpha = 2/(3+1)) of close. TRIX = 100 × (today's triple EMA / yesterday's triple EMA − 1). TRIX is a percent; typical values are well under 1.
 Compute yesterday's ADX, +DI and -DI from the series ending with yesterday's completed bar.
 
-DECISION
-Apply these rules separately to SPY and to QQQ, each using its own indicators, price and open. Each symbol's result is CALLS, PUTS or NO TRADE. Check in this exact order; the first rule that applies decides.
+DECISION (check in this exact order; the first rule that applies decides)
 1. If ADX(5) today > 60 → NO TRADE.
 2. If TRIX > 0.60 → PUTS. If TRIX < −0.60 → CALLS.
 3. ADX "stab". "Between" means strictly between the two DI lines; equal to either line is NOT between.
@@ -64,11 +62,6 @@ Apply these rules separately to SPY and to QQQ, each using its own indicators, p
    - If yesterday's ADX was below BOTH DI lines and today's ADX is between them → PUTS.
 4. If RSI(2) ≥ 85 → PUTS. If RSI(2) ≤ 15 → CALLS.
 5. Otherwise: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
-
-QQQ CONFIRMATION
-- If SPY is CALLS and QQQ is CALLS → buy SPY CALLS.
-- If SPY is PUTS and QQQ is PUTS → buy SPY PUTS.
-- In every other case (the signals differ, or either one is NO TRADE) → NO TRADE. Report both signals.
 
 EXPIRATION
 - Mon or Tue → target this week's Wednesday expiration.
@@ -118,14 +111,14 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
 REPORT
 Summarize:
 - date and time
-- for SPY and for QQQ: price, today's open, RSI(2), ADX, +DI, −DI
-- for SPY and for QQQ: yesterday's ADX, +DI, −DI, and where ADX sat relative to the DI lines
-- for SPY and for QQQ: TRIX
-- for SPY and for QQQ: which rule decided and the resulting signal, and whether QQQ confirmed SPY
+- price, today's open, RSI(2), ADX, +DI, −DI
+- yesterday's ADX, +DI, −DI, and where ADX sat relative to the DI lines
+- TRIX
+- which rule decided
 - any SPY purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
 - expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $200 cap
 - the price and result of each order: halfway, ask, and final (ask + 0.03)
 - whether this run started by cancelling an unfilled order or resuming a partial
 
-If the run resumed a partial, the indicator and confirmation fields don't apply; say so. Otherwise, report the exact reason for no trade.
+If the run resumed a partial, the indicator fields don't apply; say so. Otherwise, report the exact reason for no trade.
