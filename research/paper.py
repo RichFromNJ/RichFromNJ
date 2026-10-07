@@ -30,7 +30,7 @@ import indicators as ind  # noqa: E402
 import overnight_signal as sig  # noqa: E402
 
 LEDGER = os.path.join(HERE, "paper_ledger.json")
-UNIVERSE = ("SPY", "QQQ", "IWM")
+UNIVERSE = ("SPY", "QQQ", "IWM")  # the wider 17-ETF scan (research/universe.py) tested worse
 CRSI_MAX, DELTA, DTE, MAX_RISK, FEE = 10.0, 0.30, 21, 250.0, 0.0005
 
 

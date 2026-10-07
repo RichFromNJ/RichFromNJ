@@ -111,3 +111,34 @@ class PaperRunner(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+try:
+    import growth
+    import universe
+except ImportError:
+    growth = None
+
+
+@unittest.skipIf(growth is None, "research dependencies missing")
+class WiderScanAndGrowth(unittest.TestCase):
+    """Pins research/README.md section 7 (uses the saved research/universe_trades.csv)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.t = growth.load()
+
+    def test_kept_etfs_after_2018(self):
+        x = self.t[self.t.entry_date >= dt.date(2019, 1, 1)]
+        self.assertEqual(len(set(self.t.sym)), 17)
+        self.assertEqual((len(x), int((x.R > 0).sum())), (256, 216))
+
+    def test_no_90_day_window_reaches_3000(self):
+        starts = [d.date() for d in pd.bdate_range(dt.date(2019, 1, 1), dt.date(2026, 7, 7))][::3]
+        ends = [growth.run_window(self.t, s, 90, "f", 1.0)[0] for s in starts]
+        self.assertLess(max(ends), 1200)
+
+    def test_universe_list(self):
+        self.assertEqual(len(universe.UNIVERSE), 28)
+        self.assertNotIn("EEM", universe.UNIVERSE)
+        self.assertTrue(set(universe.KEEP) <= set(universe.UNIVERSE))

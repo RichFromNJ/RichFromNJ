@@ -137,6 +137,44 @@ that won at least 85% in 2007–2018 with 60+ trades, take the highest 2007–20
 - **The same pullback checked every hour (swing holds):** 75.9% (Dec 2023–2025) and 81.2% (2026),
   but forcing a same-day exit drops it to 44–61%. The bounce mostly happens overnight.
 
+### 7. Scanning wider, and the $500 → $10,000 (or $3,000) question
+
+**A wider scan made things worse.** `universe.py` runs the system unchanged across 28 liquid ETFs. It
+leaves out single stocks, because of earnings gaps, and EEM, because it would clash with the EEM
+Routines. 17 ETFs passed the 2007–2018 rule (profit factor ≥ 1). On 2019–2026 they won 84.4% of 256
+trades, about 32 a year, but averaged only +7% of the amount risked, against +13% for
+SPY/QQQ/IWM. More trades, lower quality.
+
+**Getting to the targets.** `growth.py` replays the real trade sequence through every 90-day window
+starting Jan 2019 – Jul 2026 (1,961 windows), each from $500:
+
+| Bet size (17-ETF scan) | Median | Best of 1,961 | Reached $10,000 | Reached $3,000 | Reached $1,000 | Lost half |
+|---|---|---|---|---|---|---|
+| 1 contract at a time | $540 | $731 | 0% | 0% | 0% | 1.7% |
+| 25% of the account per trade | $549 | $738 | 0% | 0% | 0% | 5.7% |
+| 50% of the account per trade | $576 | $966 | 0% | 0% | 0% | 12.3% |
+| 100% of the account per trade | $596 | $1,191 | 0% | 0% | 0.3% | 19.3% |
+
+- **Required pace:** $10,000 needs +4.9% every trading day for 63 days; $3,000 needs +2.9%.
+- **Nothing tested came close.** Betting more raises the risk of a wipe-out much faster than it
+  raises the upside.
+
+**The core three are more reliable than the wide scan.** One contract at a time, since 2019:
+
+| | 17-ETF scan | SPY / QQQ / IWM |
+|---|---|---|
+| Trades since 2019 | 256 (84.4% won) | 51 (88.2% won) |
+| 90-day median / chance of a loss | $540 / 23% | $544 / 7% |
+| 1-year median / chance of a loss | $525 / 46% | $632 / 25% |
+
+So the paper check stays on SPY, QQQ and IWM. Checking more often doesn't help either: the hourly
+version in `intraday.py` did no better than one 3:45pm check.
+
+**Deposits matter far more than trading.** Over all of 2019–2026, trading 1 contract at a time took
+$500 to about $1,042. Adding $250 a month made it about $24,300, and nearly all of that is the
+deposits. For $3,000 in 90 days, the dependable route is roughly $800 a month in deposits, with the
+system adding a modest, uneven return on top.
+
 ## Read this before going live
 
 - **The win rate comes from selling insurance.** Wins are small (about +$50) and the occasional loss
@@ -164,6 +202,8 @@ python3 research/spread_grid.py     # spread structures x signals (about 8 minut
 python3 research/robinhood_check.py score A   # 2026 trades at real Robinhood prices
 python3 research/backtest.py        # baseline, share strategies, option-call overlay
 python3 research/intraday.py        # day-trade and hourly research
+python3 research/universe.py        # the system across 28 ETFs (writes universe_trades.csv)
+python3 research/growth.py          # $500 over every 90-day window, by bet size
 python3 -m unittest discover -s tests
 ```
 
