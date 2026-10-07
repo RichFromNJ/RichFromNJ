@@ -1,0 +1,103 @@
+{
+ "data": {
+  "instruments": [
+   {
+    "id": "9b2c5c43-fee8-4a73-912d-15614faa4daf",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-06-26",
+    "strike_price": "676.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "71833ee3-5b10-4a4e-a13f-70001c7ceaf2",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-06-26",
+    "strike_price": "679.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "74f34d81-fa13-4328-bdc1-4cbdc5d3162c",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-08-21",
+    "strike_price": "640.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "f87621d9-0a32-42bb-814a-ef9094f63050",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-08-21",
+    "strike_price": "635.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "086df78a-7e56-468b-a745-7044c3659088",
+    "chain_symbol": "SPY",
+    "expiration_date": "2026-02-13",
+    "strike_price": "659.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "fdf04252-3fad-44b9-82c9-8a07788688b4",
+    "chain_symbol": "SPY",
+    "expiration_date": "2026-02-13",
+    "strike_price": "662.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "38036f8a-d5cb-4f2d-b116-18a8c62bf178",
+    "chain_symbol": "IWM",
+    "expiration_date": "2026-03-27",
+    "strike_price": "243.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "73f2091a-8555-4aa2-a400-c38914c8006a",
+    "chain_symbol": "IWM",
+    "expiration_date": "2026-03-27",
+    "strike_price": "246.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "d025df2d-949c-4c29-aa2c-dfc9960162b2",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-08-07",
+    "strike_price": "674.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "f5b57424-d9e2-4f72-8ee1-4683796fe569",
+    "chain_symbol": "QQQ",
+    "expiration_date": "2026-08-07",
+    "strike_price": "677.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "64287991-c56b-4c28-ba99-9c0be3b9d959",
+    "chain_symbol": "IWM",
+    "expiration_date": "2026-09-25",
+    "strike_price": "284.0000",
+    "type": "put",
+    "state": "expired"
+   },
+   {
+    "id": "6dc17fcf-c8ba-428a-ab30-83e4eb68f4b9",
+    "chain_symbol": "IWM",
+    "expiration_date": "2026-09-25",
+    "strike_price": "287.0000",
+    "type": "put",
+    "state": "expired"
+   }
+  ]
+ },
+ "note": "From Robinhood get_option_instruments (state=expired), Oct 7 2026. QQQ 2026-08-21 637P and 638P were never listed."
+}

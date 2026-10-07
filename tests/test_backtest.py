@@ -63,6 +63,36 @@ class ProposedRoutine(unittest.TestCase):
 
 
 @unittest.skipIf(bt is None, "research dependencies missing")
+class HourlyRoutine(unittest.TestCase):
+    """Pins the hourly-check numbers in research/README.md."""
+
+    @classmethod
+    def setUpClass(cls):
+        import intraday
+        cls.intraday = intraday
+        cls.dev, cls.ytd, cls.open_pos = intraday.hourly_results()
+
+    def test_dec_2023_to_2025(self):
+        s = bt.stats(self.dev)
+        self.assertEqual((s["n"], s["wins"]), (29, 22))
+
+    def test_2026(self):
+        s = bt.stats(self.ytd)
+        self.assertEqual((s["n"], s["wins"]), (16, 13))
+        self.assertIsNone(self.open_pos)
+
+    def test_one_buy_per_day_and_one_position(self):
+        t = self.ytd.sort_values("entry_date")
+        self.assertTrue(t.entry_date.is_unique)
+        self.assertTrue((t.entry_date.values[1:] >= t.exit_date.values[:-1]).all())
+
+    def test_same_day_version_falls_short(self):
+        panels = {s: self.intraday.checkpoints(s) for s in bt.ETFS}
+        t = self.intraday.same_day_pullback(panels, self.intraday.HOURLY_DEV, 5)
+        self.assertLess(bt.stats(t)["win"], 65.0)
+
+
+@unittest.skipIf(bt is None, "research dependencies missing")
 class Baseline(unittest.TestCase):
     def test_live_rules_are_a_coin_flip_in_2026(self):
         t = bt.live_rules_2026("EEM")
