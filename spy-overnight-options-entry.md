@@ -8,7 +8,7 @@ Use the single Robinhood account that is agent-enabled (nickname "Agentic"). Nev
 
 BUDGET
 One budget applies whether the contract is out of the money (OTM) or in the money (ITM). STRIKE defines both. It is a daily limit.
-- Premium budget = $195. Hard cap: total SPY premium plus fees today must never exceed $200.
+- Premium budget = $245. Hard cap: total SPY premium plus fees today must never exceed $250.
 - Spent today = sum of (filled quantity × fill price × 100) for every SPY BUY TO OPEN fill today in this account, including fills from earlier runs or orders.
 - One type per day: once an OTM purchase has filled today, no ITM purchase may be made today. Once an ITM purchase has filled today, no OTM purchase may be made today.
 
@@ -71,7 +71,7 @@ EXPIRATION
 STRIKE
 1. Definitions. CALLS: a strike above the current SPY price is OTM; a strike at or below the price is ITM. PUTS: a strike below the current SPY price is OTM; a strike at or above the price is ITM.
 2. Candidates: the nearest OTM strike and the nearest ITM strike, for the signal's option type and the chosen expiration. Only these two contracts may be bought. If pre-check 4 locked today's type, only the candidate of that type may be bought.
-3. Remove a candidate if it has no bid or no ask, or if the budget can't buy one contract at the ask (ask × 100 > $195). If no candidate is left, NO TRADE. If one is left, choose it.
+3. Remove a candidate if it has no bid or no ask, or if the budget can't buy one contract at the ask (ask × 100 > $245). If no candidate is left, NO TRADE. If one is left, choose it.
 4. If both are left, choose OTM or ITM using your judgment. Weigh:
    - How far the OTM strike is from the current price. The closer it is, the more it behaves like the ITM contract.
    - Each contract's bid-ask spread as a percent of its mid. A wide spread costs more to get in and out.
@@ -104,7 +104,7 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
    f. Do not cancel it. Leave it working until it fills or expires at the end of the trading day. Check it once a minute until it is fully filled or no longer open, then report the final fills.
 6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.03, never higher.
-7. Never place a MARKET order. Never exceed the $200 hard cap. Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except SPY options. Never place a new buy order after the purchase deadline.
+7. Never place a MARKET order. Never exceed the $250 hard cap. Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except SPY options. Never place a new buy order after the purchase deadline.
 
 REPORT
 Summarize:
@@ -115,7 +115,7 @@ Summarize:
 - which rule decided
 - any SPY purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
-- expiration, the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $200 cap
+- expiration, the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $250 cap
 - the price and result of each order: halfway, ask, and final (ask + 0.03)
 - whether this run started by cancelling an unfilled order or resuming a partial
 
