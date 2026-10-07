@@ -64,11 +64,9 @@ DECISION (check in this exact order; the first rule that applies decides)
 5. Otherwise: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
 
 EXPIRATION
-- Mon or Tue → target this week's Wednesday expiration.
-- Wed or Thu → target this week's Friday expiration.
-- If the target expiration isn't listed, use the next listed expiration after it, as long as it's within 3 calendar days after the target. Otherwise NO TRADE.
-- Never use an expiration earlier than the target or one that expires today.
-- Report whether you used the target or the fallback.
+- Use only tomorrow's expiration: the contract that expires on the next trading day. Pre-check 1 already blocks the day before a holiday, so this is always tomorrow's date.
+- If tomorrow's expiration isn't listed, NO TRADE. Never use any other expiration, including one that expires today or any later date.
+- Report the expiration used.
 
 STRIKE
 1. Definitions. CALLS: a strike above the current SPY price is OTM; a strike at or below the price is ITM. PUTS: a strike below the current SPY price is OTM; a strike at or above the price is ITM.
@@ -117,7 +115,7 @@ Summarize:
 - which rule decided
 - any SPY purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
-- expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $200 cap
+- expiration, the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $200 cap
 - the price and result of each order: halfway, ask, and final (ask + 0.03)
 - whether this run started by cancelling an unfilled order or resuming a partial
 
