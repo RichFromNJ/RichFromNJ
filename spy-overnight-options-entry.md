@@ -51,7 +51,7 @@ INDICATORS (Green Goose settings, as on the TradingView chart)
 Compute every indicator with a script (for example, Python in the shell), not by hand. Use the bar series from DATA, ending with today's bar.
 - RSI(2): Wilder smoothing, period 2. Seed with the simple average of the first 2 gains/losses.
 - ADX(5), +DI(5), -DI(5): standard Wilder method, period 5 for both DI and ADX smoothing.
-- TRIX is not used for SPY. The Green Goose course applies the TRIX override to EEM only.
+- TRIX is not used for SPY. The Green Goose course sets a TRIX level only for EEM (±60) and gives none for SPY.
 Compute yesterday's ADX, +DI, -DI and RSI(2) from the series ending with yesterday's completed bar.
 The ZONE is the space strictly between the +DI and -DI lines. A value equal to either line is NOT in the zone. A value is "outside" the zone when it is above both DI lines or below both DI lines. Always compare yesterday's values with yesterday's DI lines and today's values with today's DI lines.
 
