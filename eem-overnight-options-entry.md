@@ -7,10 +7,9 @@ ACCOUNT
 Use the single Robinhood account that is agent-enabled (nickname "Agentic"). Never touch any other account.
 
 BUDGET
-The limits depend on whether the contract is out of the money (OTM) or in the money (ITM). STRIKE defines both. Both are daily limits.
-- OTM: premium budget = $130. Hard cap: total OTM premium plus fees today must never exceed $135.
-- ITM: premium budget = $245. Hard cap: total ITM premium plus fees today must never exceed $250.
-- Spent today = sum of (filled quantity × fill price × 100) for every EEM BUY TO OPEN fill today of the chosen type in this account, including fills from earlier runs or orders.
+One budget applies whether the contract is out of the money (OTM) or in the money (ITM). STRIKE defines both. It is a daily limit.
+- Premium budget = $495. Hard cap: total EEM premium plus fees today must never exceed $500.
+- Spent today = sum of (filled quantity × fill price × 100) for every EEM BUY TO OPEN fill today in this account, including fills from earlier runs or orders.
 - One type per day: once an OTM purchase has filled today, no ITM purchase may be made today. Once an ITM purchase has filled today, no OTM purchase may be made today.
 
 TIMES (all ET; on a half-day, use the earlier time in each pair)
@@ -36,7 +35,7 @@ PRE-CHECKS (skip the trade if any fail)
      a. Cancel the unfilled remainder, then confirm the cancel and read the final filled quantity and average fill price.
      b. Record the contract and classify it as OTM or ITM as described in pre-check 4.
      c. Skip pre-check 3, DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE.
-     d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract, using the budget for its type.
+     d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract, .
 3. If this account holds any open EEM option position, NO TRADE. Report it.
 4. Find every EEM BUY TO OPEN order that filled today in this account, whoever placed it. Classify each fill as OTM or ITM by comparing its strike with EEM's price at the time of the fill (use the 5-minute bar that contains the fill time). If that can't be determined, treat it as OTM. If any fills exist, today's type is locked to their type. If fills of both types exist, NO TRADE. Report what you found.
 
@@ -48,21 +47,25 @@ DATA
 5. If the historical data already contains a bar dated today, REPLACE it with the bar from step 4. Never count today twice.
 6. If fewer than 60 completed bars remain, or today's open or the last price is missing, NO TRADE.
 
-INDICATORS
+INDICATORS (Green Goose settings, as on the TradingView chart)
 Compute every indicator with a script (for example, Python in the shell), not by hand. Use the bar series from DATA, ending with today's bar.
 - RSI(2): Wilder smoothing, period 2. Seed with the simple average of the first 2 gains/losses.
 - ADX(5), +DI(5), -DI(5): standard Wilder method, period 5 for both DI and ADX smoothing.
-- TRIX(3): triple EMA (period 3, alpha = 2/(3+1)) of close. TRIX = 100 × (today's triple EMA / yesterday's triple EMA − 1). TRIX is a percent; typical values are well under 1.
-Compute yesterday's ADX, +DI and -DI from the series ending with yesterday's completed bar.
+- TRIX(3), TradingView scale: triple EMA (period 3, alpha = 2/(3+1)) of the natural log of close. TRIX = 10000 × (today's triple EMA − yesterday's triple EMA). This is TradingView's built-in TRIX; typical values are in the tens, and the threshold below is 60.
+Compute yesterday's ADX, +DI, -DI and RSI(2) from the series ending with yesterday's completed bar.
+The ZONE is the space strictly between the +DI and -DI lines. A value equal to either line is NOT in the zone. A value is "outside" the zone when it is above both DI lines or below both DI lines. Always compare yesterday's values with yesterday's DI lines and today's values with today's DI lines.
 
 DECISION (check in this exact order; the first rule that applies decides)
 1. If ADX(5) today > 60 → NO TRADE.
-2. If TRIX > 0.60 → PUTS. If TRIX < −0.60 → CALLS.
-3. ADX "stab". "Between" means strictly between the two DI lines; equal to either line is NOT between.
-   - If yesterday's ADX was above BOTH DI lines and today's ADX is between them → CALLS.
-   - If yesterday's ADX was below BOTH DI lines and today's ADX is between them → PUTS.
-4. If RSI(2) ≥ 85 → PUTS. If RSI(2) ≤ 15 → CALLS.
-5. Otherwise: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
+2. TRIX: if TRIX > 60 → PUTS. If TRIX < −60 → CALLS.
+3. ADX enters the zone: if yesterday's ADX was outside the zone and today's ADX is in the zone, go with the DI line in control today (the higher of the two):
+   - +DI above −DI → CALLS.
+   - −DI above +DI → PUTS.
+4. RSI(2) stab into or through the zone:
+   - If yesterday's RSI(2) was above both DI lines and today's RSI(2) is in the zone or below both DI lines (a stab down) → CALLS.
+   - If yesterday's RSI(2) was below both DI lines and today's RSI(2) is in the zone or above both DI lines (a stab up) → PUTS.
+5. If RSI(2) > 85 → PUTS. If RSI(2) < 15 → CALLS.
+6. Otherwise (RSI(2) neutral, no override), go with today's momentum, which is the color of today's candle: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
 
 EXPIRATION
 - Mon or Tue → target this week's Wednesday expiration.
@@ -74,7 +77,7 @@ EXPIRATION
 STRIKE
 1. Definitions. CALLS: a strike above the current price is OTM; a strike at or below the price is ITM. PUTS: a strike below the current price is OTM; a strike at or above the price is ITM.
 2. Candidates: the nearest OTM strike and the nearest ITM strike, for the signal's option type and the chosen expiration. Only these two contracts may be bought. If pre-check 4 locked today's type, only the candidate of that type may be bought.
-3. Remove a candidate if it has no bid or no ask, or if its budget can't buy one contract at the ask (OTM: ask × 100 > $130; ITM: ask × 100 > $245). If no candidate is left, NO TRADE. If one is left, choose it.
+3. Remove a candidate if it has no bid or no ask, or if the budget can't buy one contract at the ask (ask × 100 > $495). If no candidate is left, NO TRADE. If one is left, choose it.
 4. If both are left, choose OTM or ITM using your judgment. Weigh:
    - How far the OTM strike is from the current price. The closer it is, the more it behaves like the ITM contract. For reference, the earlier rule chose OTM only when it was within $0.30.
    - Each contract's bid-ask spread as a percent of its mid. A wide spread costs more to get in and out.
@@ -83,7 +86,7 @@ STRIKE
 5. Report both candidates (strike, bid, ask, spread, open interest, volume, delta), which one you chose, and a short reason.
 
 SIZE
-- Get the chosen contract's quote. Quantity = floor((premium budget − spent today) / (ask × 100)), using the budget for the chosen type. If quantity is 0, NO TRADE.
+- Get the chosen contract's quote. Quantity = floor((premium budget − spent today) / (ask × 100)), . If quantity is 0, NO TRADE.
 
 ORDER
 If ORDER begins at or after the final-order time, skip steps 1–4 and go straight to step 5.
@@ -107,18 +110,19 @@ If ORDER begins at or after the final-order time, skip steps 1–4 and go straig
    e. Review a BUY TO OPEN LIMIT order for the final quantity at the final price, good for day, regular hours (warning rule in step 2). Then place it.
    f. Do not cancel it. Leave it working until it fills or expires at the end of the trading day. Check it once a minute until it is fully filled or no longer open, then report the final fills.
 6. Only ever buy the chosen contract. Before the final limit order, never place a limit price above the current ask. The final limit order may be priced up to ask + 0.03, never higher.
-7. Never place a MARKET order. Never exceed the hard cap for the chosen type ($135 OTM, $250 ITM). Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never place a new buy order after the purchase deadline.
+7. Never place a MARKET order. Never exceed the $500 hard cap. Never buy both OTM and ITM on the same day. Never sell to open. Never trade anything except EEM options. Never place a new buy order after the purchase deadline.
 
 REPORT
 Summarize:
 - date and time
 - price, today's open, RSI(2), ADX, +DI, −DI
-- yesterday's ADX, +DI, −DI, and where ADX sat relative to the DI lines
-- TRIX
+- yesterday's RSI(2), ADX, +DI, −DI
+- where ADX and RSI(2) sat relative to the zone yesterday and today (above both, in the zone, or below both)
+- TRIX (TradingView scale)
 - which rule decided
 - any EEM purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
-- expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, which limit applied ($135 OTM or $250 ITM), budget left unspent
+- expiration (target or fallback), the contract, total quantity, every fill price (marking which fill came from the final limit order), total cost including fees, budget left unspent under the $500 cap
 - the price and result of each order: halfway, ask, and final (ask + 0.03)
 - whether this run started by cancelling an unfilled order or resuming a partial
 

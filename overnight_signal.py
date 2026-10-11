@@ -31,7 +31,7 @@ ET = ZoneInfo("America/New_York")
 LOOKBACK = 80           # completed trading days used for the rule indicators
 MIN_BARS = 60           # fewer completed bars than this -> NO TRADE
 RSI_PERIOD, DMI_PERIOD, TRIX_PERIOD = 2, 5, 3
-ADX_MAX, TRIX_LIMIT, RSI_HIGH, RSI_LOW = 60.0, 0.60, 85.0, 15.0
+ADX_MAX, TRIX_LIMIT, RSI_HIGH, RSI_LOW = 60.0, 60.0, 85.0, 15.0  # TRIX on TradingView scale
 # Daily limits by moneyness: (premium budget, hard cap including fees), dollars.
 LIMITS = {"OTM": (130.0, 135.0), "ITM": (245.0, 250.0)}
 
@@ -239,7 +239,9 @@ def context_levels(history, today):
 # ---------------------------------------------------------------- decision
 
 def decide(series):
-    """DECISION rules 1-5. Returns a dict with every reported value."""
+    """DECISION rules 1-6 (Green Goose as taught in the course). Returns a dict
+    with every reported value. The zone is the space strictly between +DI and
+    -DI; "outside" means above both or below both DI lines."""
     closes = [b.c for b in series]
     r = rsi(closes)
     adx, plus, minus = dmi(series)
@@ -251,33 +253,41 @@ def decide(series):
         "price": closes[today], "open": series[today].o,
         "high": series[today].h, "low": series[today].l,
         "rsi2": r[today], "adx": adx[today], "plus_di": plus[today], "minus_di": minus[today],
-        "y_adx": adx[yday], "y_plus_di": plus[yday], "y_minus_di": minus[yday],
+        "y_rsi2": r[yday], "y_adx": adx[yday], "y_plus_di": plus[yday], "y_minus_di": minus[yday],
         "trix": tx[today], "trix_tradingview_scale": tx_tv[today],
         "bars_used": len(series) - 1,
     }
     v["position"] = adx_position(v["adx"], v["plus_di"], v["minus_di"])
     v["y_position"] = adx_position(v["y_adx"], v["y_plus_di"], v["y_minus_di"])
+    v["rsi_position"] = adx_position(v["rsi2"], v["plus_di"], v["minus_di"])
+    v["y_rsi_position"] = adx_position(v["y_rsi2"], v["y_plus_di"], v["y_minus_di"])
+    t = v["trix_tradingview_scale"]
 
     if v["adx"] > ADX_MAX:
         signal, rule = "NO TRADE", f"Rule 1: ADX {v['adx']:.2f} > {ADX_MAX:g}"
-    elif v["trix"] > TRIX_LIMIT:
-        signal, rule = "PUTS", f"Rule 2: TRIX {v['trix']:.4f} > {TRIX_LIMIT}"
-    elif v["trix"] < -TRIX_LIMIT:
-        signal, rule = "CALLS", f"Rule 2: TRIX {v['trix']:.4f} < -{TRIX_LIMIT}"
-    elif v["y_position"] == "above both" and v["position"] == "between":
-        signal, rule = "CALLS", "Rule 3: ADX stab down into the DI zone"
-    elif v["y_position"] == "below both" and v["position"] == "between":
-        signal, rule = "PUTS", "Rule 3: ADX stab up into the DI zone"
-    elif v["rsi2"] >= RSI_HIGH:
-        signal, rule = "PUTS", f"Rule 4: RSI(2) {v['rsi2']:.2f} >= {RSI_HIGH:g}"
-    elif v["rsi2"] <= RSI_LOW:
-        signal, rule = "CALLS", f"Rule 4: RSI(2) {v['rsi2']:.2f} <= {RSI_LOW:g}"
+    elif t > TRIX_LIMIT:
+        signal, rule = "PUTS", f"Rule 2: TRIX {t:.1f} > {TRIX_LIMIT:g}"
+    elif t < -TRIX_LIMIT:
+        signal, rule = "CALLS", f"Rule 2: TRIX {t:.1f} < -{TRIX_LIMIT:g}"
+    elif v["y_position"] in ("above both", "below both") and v["position"] == "between":
+        if v["plus_di"] > v["minus_di"]:
+            signal, rule = "CALLS", "Rule 3: ADX entered the zone, +DI in control"
+        else:
+            signal, rule = "PUTS", "Rule 3: ADX entered the zone, -DI in control"
+    elif v["y_rsi_position"] == "above both" and v["rsi_position"] in ("between", "below both"):
+        signal, rule = "CALLS", "Rule 4: RSI(2) stab down into the zone"
+    elif v["y_rsi_position"] == "below both" and v["rsi_position"] in ("between", "above both"):
+        signal, rule = "PUTS", "Rule 4: RSI(2) stab up into the zone"
+    elif v["rsi2"] > RSI_HIGH:
+        signal, rule = "PUTS", f"Rule 5: RSI(2) {v['rsi2']:.2f} > {RSI_HIGH:g}"
+    elif v["rsi2"] < RSI_LOW:
+        signal, rule = "CALLS", f"Rule 5: RSI(2) {v['rsi2']:.2f} < {RSI_LOW:g}"
     elif v["price"] > v["open"]:
-        signal, rule = "CALLS", "Rule 5: price above today's open"
+        signal, rule = "CALLS", "Rule 6: price above today's open"
     elif v["price"] < v["open"]:
-        signal, rule = "PUTS", "Rule 5: price below today's open"
+        signal, rule = "PUTS", "Rule 6: price below today's open"
     else:
-        signal, rule = "NO TRADE", "Rule 5: price equals today's open"
+        signal, rule = "NO TRADE", "Rule 6: price equals today's open"
     v["signal"], v["rule"] = signal, rule
     return v
 
@@ -361,8 +371,9 @@ def run_signal(args):
     if "rsi2" in s:
         print(f"  price {s['price']:.4f}  open {s['open']:.4f}  high {s['high']:.4f}  low {s['low']:.4f}  ({s['bars_used']} completed bars)")
         print(f"  RSI(2) {_fmt(s['rsi2'])}  ADX {_fmt(s['adx'])}  +DI {_fmt(s['plus_di'])}  -DI {_fmt(s['minus_di'])}  -> ADX {s['position']}")
-        print(f"  yesterday: ADX {_fmt(s['y_adx'])}  +DI {_fmt(s['y_plus_di'])}  -DI {_fmt(s['y_minus_di'])}  -> ADX {s['y_position']}")
-        print(f"  TRIX(3) {s['trix']:.4f}%  (TradingView scale {s['trix_tradingview_scale']:.1f})")
+        print(f"  yesterday: RSI(2) {_fmt(s['y_rsi2'])}  ADX {_fmt(s['y_adx'])}  +DI {_fmt(s['y_plus_di'])}  -DI {_fmt(s['y_minus_di'])}  -> ADX {s['y_position']}")
+        print(f"  RSI(2) vs zone: yesterday {s['y_rsi_position']}, today {s['rsi_position']}")
+        print(f"  TRIX(3) {s['trix_tradingview_scale']:.1f} (TradingView scale)")
         c = s["context"]
         if c:
             print("  context: " + "  ".join(f"{k} {v:.2f}" for k, v in c.items()))

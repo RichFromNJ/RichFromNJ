@@ -30,7 +30,7 @@ class KnownValues(unittest.TestCase):
         self.assertAlmostEqual(v["y_adx"], 21.74, places=2)
         self.assertEqual(v["y_position"], "below both")
         self.assertEqual(v["position"], "below both")
-        self.assertEqual((v["signal"], v["rule"][:6]), ("PUTS", "Rule 4"))
+        self.assertEqual((v["signal"], v["rule"][:6]), ("PUTS", "Rule 5"))
 
     def test_tradingview_monday_close_matches_tradingview_levels(self):
         v, history, today = run("tradingview", "eem_tradingview_2026-10-05.json", MON, 68.45, 68.875, 68.3584, 68.73)
@@ -46,6 +46,45 @@ class KnownValues(unittest.TestCase):
         self.assertAlmostEqual(c["ema20"], 67.4199, places=3)
         self.assertAlmostEqual(c["ema50"], 66.8771, places=3)
         self.assertAlmostEqual(c["sma200"], 63.0733, places=3)
+
+
+class GreenGooseCourseCalls(unittest.TestCase):
+    """The instructor's own EEM calls from the Green Goose course (Feb 2022), with the
+    values he read off his TradingView chart. Uses research/data/AMEX_EEM_1D.csv."""
+
+    @classmethod
+    def setUpClass(cls):
+        import csv
+        path = os.path.join(os.path.dirname(__file__), "..", "research", "data", "AMEX_EEM_1D.csv")
+        cls.bars = [sig.Bar(dt.date.fromisoformat(r["et"][:10]), float(r["o"]), float(r["h"]), float(r["l"]), float(r["c"]))
+                    for r in csv.DictReader(open(path))]
+
+    def call(self, day):
+        i = next(k for k, b in enumerate(self.bars) if b.date == day)
+        return sig.decide(self.bars[i - sig.LOOKBACK:i + 1])  # the holiday list doesn't cover 2022
+
+    def test_rsi_stab_down_is_calls(self):  # "RSI 32.39 ... between 32.93 and 29.44 ... stab down ... calls"
+        v = self.call(dt.date(2022, 2, 3))
+        self.assertEqual([round(v[k], 2) for k in ("rsi2", "plus_di", "minus_di")], [32.39, 32.93, 29.44])
+        self.assertEqual((v["signal"], v["rule"][:6]), ("CALLS", "Rule 4"))
+
+    def test_rsi_stab_up_through_the_zone_is_puts(self):  # "Stab up. No ADX entry ... I take puts"
+        self.assertEqual((self.call(dt.date(2022, 2, 15))["signal"]), "PUTS")
+
+    def test_adx_entering_the_zone_follows_the_di_in_control(self):  # "RSI 82.01 ... ADX entered the zone ... calls"
+        v = self.call(dt.date(2022, 2, 16))
+        self.assertAlmostEqual(v["rsi2"], 82.01, places=2)
+        self.assertEqual((v["signal"], v["rule"][:6]), ("CALLS", "Rule 3"))
+
+    def test_rsi_below_15_is_calls(self):  # "ADX 22.30 ... zone between 23.61 and 48 ... RSI below 15 ... calls"
+        v = self.call(dt.date(2022, 2, 22))
+        self.assertEqual([round(v[k], 2) for k in ("adx", "plus_di")], [22.30, 23.61])
+        self.assertEqual((v["signal"], v["rule"][:6]), ("CALLS", "Rule 5"))
+
+    def test_trix_override_beats_the_adx_entry(self):  # "TRIX settling out at minus 60 and below ... switched to calls"
+        v = self.call(dt.date(2022, 2, 23))
+        self.assertLess(v["trix_tradingview_scale"], -60)
+        self.assertEqual((v["signal"], v["rule"][:6]), ("CALLS", "Rule 2"))
 
 
 class DataChecks(unittest.TestCase):
