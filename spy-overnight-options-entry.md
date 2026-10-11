@@ -47,21 +47,24 @@ DATA
 5. If the historical data already contains a bar dated today, REPLACE it with the bar from step 4. Never count today twice.
 6. If fewer than 60 completed bars remain, or today's open or the last price is missing, NO TRADE.
 
-INDICATORS
+INDICATORS (Green Goose settings, as on the TradingView chart)
 Compute every indicator with a script (for example, Python in the shell), not by hand. Use the bar series from DATA, ending with today's bar.
 - RSI(2): Wilder smoothing, period 2. Seed with the simple average of the first 2 gains/losses.
 - ADX(5), +DI(5), -DI(5): standard Wilder method, period 5 for both DI and ADX smoothing.
-- TRIX(3): triple EMA (period 3, alpha = 2/(3+1)) of close. TRIX = 100 × (today's triple EMA / yesterday's triple EMA − 1). TRIX is a percent; typical values are well under 1.
-Compute yesterday's ADX, +DI and -DI from the series ending with yesterday's completed bar.
+- TRIX is not used for SPY. The Green Goose course applies the TRIX override to EEM only.
+Compute yesterday's ADX, +DI, -DI and RSI(2) from the series ending with yesterday's completed bar.
+The ZONE is the space strictly between the +DI and -DI lines. A value equal to either line is NOT in the zone. A value is "outside" the zone when it is above both DI lines or below both DI lines. Always compare yesterday's values with yesterday's DI lines and today's values with today's DI lines.
 
 DECISION (check in this exact order; the first rule that applies decides)
 1. If ADX(5) today > 60 → NO TRADE.
-2. If TRIX > 0.60 → PUTS. If TRIX < −0.60 → CALLS.
-3. ADX "stab". "Between" means strictly between the two DI lines; equal to either line is NOT between.
-   - If yesterday's ADX was above BOTH DI lines and today's ADX is between them → CALLS.
-   - If yesterday's ADX was below BOTH DI lines and today's ADX is between them → PUTS.
-4. If RSI(2) ≥ 85 → PUTS. If RSI(2) ≤ 15 → CALLS.
-5. Otherwise: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
+2. ADX enters the zone: if yesterday's ADX was outside the zone and today's ADX is in the zone, go with the DI line in control today (the higher of the two):
+   - +DI above −DI → CALLS.
+   - −DI above +DI → PUTS.
+3. RSI(2) stab into or through the zone:
+   - If yesterday's RSI(2) was above both DI lines and today's RSI(2) is in the zone or below both DI lines (a stab down) → CALLS.
+   - If yesterday's RSI(2) was below both DI lines and today's RSI(2) is in the zone or above both DI lines (a stab up) → PUTS.
+4. If RSI(2) > 85 → PUTS. If RSI(2) < 15 → CALLS.
+5. Otherwise (RSI(2) neutral, no override), go with today's momentum, which is the color of today's candle: if the current price > today's open → CALLS. If the current price < today's open → PUTS. If they're equal → NO TRADE.
 
 EXPIRATION
 - Use only tomorrow's expiration: the contract that expires on the next trading day. Pre-check 1 already blocks the day before a holiday, so this is always tomorrow's date.
@@ -110,8 +113,8 @@ REPORT
 Summarize:
 - date and time
 - price, today's open, RSI(2), ADX, +DI, −DI
-- yesterday's ADX, +DI, −DI, and where ADX sat relative to the DI lines
-- TRIX
+- yesterday's RSI(2), ADX, +DI, −DI
+- where ADX and RSI(2) sat relative to the zone yesterday and today (above both, in the zone, or below both)
 - which rule decided
 - any SPY purchases found by pre-check 4 and the type they locked
 - both strike candidates (strike, bid, ask, spread, open interest, volume, delta), OTM or ITM chosen, and why
