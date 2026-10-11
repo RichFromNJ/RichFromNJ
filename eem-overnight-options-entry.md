@@ -35,7 +35,7 @@ PRE-CHECKS (skip the trade if any fail)
      a. Cancel the unfilled remainder, then confirm the cancel and read the final filled quantity and average fill price.
      b. Record the contract and classify it as OTM or ITM as described in pre-check 4.
      c. Skip pre-check 3, DATA, INDICATORS, DECISION, EXPIRATION, STRIKE and SIZE.
-     d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract, .
+     d. Go straight to ORDER, step 4 (the attempt at the ask), for that same contract.
 3. If this account holds any open EEM option position, NO TRADE. Report it.
 4. Find every EEM BUY TO OPEN order that filled today in this account, whoever placed it. Classify each fill as OTM or ITM by comparing its strike with EEM's price at the time of the fill (use the 5-minute bar that contains the fill time). If that can't be determined, treat it as OTM. If any fills exist, today's type is locked to their type. If fills of both types exist, NO TRADE. Report what you found.
 
@@ -82,11 +82,11 @@ STRIKE
    - How far the OTM strike is from the current price. The closer it is, the more it behaves like the ITM contract. For reference, the earlier rule chose OTM only when it was within $0.30.
    - Each contract's bid-ask spread as a percent of its mid. A wide spread costs more to get in and out.
    - Each contract's open interest and today's volume. A contract that barely trades may not fill.
-   - Each contract's delta, and how many contracts its budget buys.
+   - Each contract's delta, and how many contracts the budget buys.
 5. Report both candidates (strike, bid, ask, spread, open interest, volume, delta), which one you chose, and a short reason.
 
 SIZE
-- Get the chosen contract's quote. Quantity = floor((premium budget − spent today) / (ask × 100)), . If quantity is 0, NO TRADE.
+- Get the chosen contract's quote. Quantity = floor((premium budget − spent today) / (ask × 100)). If quantity is 0, NO TRADE.
 
 ORDER
 If ORDER begins at or after the final-order time, skip steps 1–4 and go straight to step 5.
