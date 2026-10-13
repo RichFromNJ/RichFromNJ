@@ -22,15 +22,13 @@ PRE-CHECKS
    - anything else (a lone short leg, unequal quantities, three legs) is a broken position: place nothing, and begin the report with "STILL OPEN — EXPIRES TODAY" and its legs.
    Long-only positions (for example the overnight EEM or SPY options) belong to other routines; never touch them.
 
-PRICES
-- Quotes: get_option_quotes for the group's instrument ids; save the response, and compute these with a short script (Python in the shell), never by hand:
-  - natural debit = the sum of the short legs' asks − the sum of the long legs' bids
-  - mid debit = the sum of the short legs' mids − the sum of the long legs' mids, each mid = (bid + ask) / 2
-- Tick = the legs' min_ticks (get_option_instruments with ids = the instrument ids, saved): below_tick for a price under cutoff_price, above_tick at or above it.
-- First price = the mid debit, rounded UP to the tick.
-- Re-price = the larger of the new mid debit rounded UP to the tick and the previous price plus one tick, but never above the natural debit.
-- Final price = the natural debit plus one tick.
-- If a short leg has no ask or a long leg has no bid, place no order for the group this minute; re-check next minute and report it.
+PRICES (from the repository's earnings_condor.py, run from the RichFromNJ checkout; never computed by hand)
+- Instruments: get_option_instruments with ids = the group's instrument ids; save it (it carries the legs' min_ticks). Quotes: get_option_quotes for the same ids; save the response.
+- Run `python3 earnings_condor.py buyback --quotes <quotes file> --instruments <instruments file> --short <every short leg id> --long <every long leg id> [--previous <previous price>] --json`. It prints the natural debit (short asks − long bids), the mid debit (short mids − long mids), the tick and:
+  - first_price = the mid debit, rounded UP to the tick
+  - reprice (with --previous) = the larger of the new mid debit rounded UP to the tick and the previous price plus one tick, but never above the natural debit
+  - final_price = the natural debit plus one tick
+- A quote field that is missing or null means no quote, and the script fails: place no order for the group this minute; re-check next minute and report it. A long leg's bid of 0.00 is a real bid of zero (the normal state of a worthless wing on expiration day): it counts as 0 in the natural debit and the close goes ahead. Only a short leg with no ask (null or 0.00) makes the natural debit unknown.
 - Use a LIMIT order for every close, never a market order: Robinhood can cap the size of market option orders (OPTION_MARKET_OVER_CONTRACT_LIMIT, which allowed only 1 contract), and limit orders avoid that cap.
 
 STEPS (for each qualifying group)
@@ -40,11 +38,11 @@ If this run starts at or after the final-order time, skip steps 1–3 and go str
    - Otherwise place it with place_option_order, same parameters, with a fresh ref_id. Record the order id.
 2. Every 2 minutes until the final-order time, check the order:
    - If it is fully filled, the group is closed. Stop working it.
-   - If it is not fully filled: cancel it, confirm the cancel succeeded, and read the filled quantity. If the cancel failed because it filled, the group is closed. Otherwise re-quote, review and re-place the remaining quantity at the re-price, with the same warning rule as step 1.
+   - If it is not fully filled: cancel it, confirm the cancel succeeded, and read the filled quantity. If the cancel failed because it filled, the group is closed. Otherwise re-quote, re-run the buyback command with --previous = the cancelled price, review and re-place the remaining quantity at its reprice, with the same warning rule as step 1.
 3. Between checks, wait about 120 seconds using whatever wait method is available. If no wait method works, re-check the current time and check again as soon as at least two minutes have passed. Do not end the run because a wait failed.
 4. At the final-order time (10:27am), if the group is not fully closed:
    a. Cancel any open order you placed, confirm the cancel succeeded, and read the filled quantity.
-   b. Re-quote. If a short leg has no ask, place nothing, report it, and try again next minute.
+   b. Re-quote and re-run the buyback command. If a short leg has no ask (the script fails), place nothing, report it, and try again next minute. A long leg's 0.00 bid is not a reason to wait.
    c. Otherwise review and place a LIMIT order for the remaining quantity at the final price, good for day, regular hours, with the same legs and warning rule as step 1.
    d. Once a minute until the deadline, if it is not fully filled: cancel it, confirm the cancel, read the filled quantity, re-quote and re-place at the new final price, as in b–c.
 5. At the deadline (10:30am), cancel any order you placed that is still open, confirm the cancel, and read the final fills.

@@ -53,7 +53,15 @@ Step 2  python3 research/earnings_condor_check.py score --events EVENTS.json [--
         table: python3 earnings_condor.py score --events PATH --bars BARS_DIR/historicals
         Keep PATH outside the historicals folder: the module reads every *.json there as bars.
 
-Module names used (public only): Params, reaction_day(report_date, timing), score_event(event,
+        Differences from the live `earnings_condor.py build`, on purpose: (a) no history filter
+        (hist_need of hist_of) and no min_price, so the table scores every name, including ones
+        the live build would veto, and no liquidity, delta or natural-vs-mid check (daily bars
+        carry no bid, ask, delta or volume); (b) the expiration is GUESSED as the first Friday on
+        or after the reaction day (Thursday before a Friday holiday), not the first listed
+        expiration within max_days_to_expiration, so a monthly-only name needs "expiration" in
+        its event. ATM and short strikes use the module's own ec.atm_strike / ec.short_strikes.
+
+Module names used (public only): Params, reaction_day(report_date, timing), atm_strike, short_strikes, score_event(event,
 bars) and aggregate(results). `event` carries symbol, entry_date, reaction_day, width, qty, price
 (the entry close), reaction_close, "legs" = {short_put, long_put, short_call, long_call: instrument
 id} and "straddle" = {"put": id, "call": id}; `bars` maps an instrument id to {date: close} with
@@ -217,14 +225,16 @@ def series(bars):
 
 
 def atm_strike(strikes, price):
-    """Listed strike nearest the price; a tie goes to the lower strike."""
-    return min(sorted(strikes), key=lambda k: (abs(k - price), k))
+    """Listed strike nearest the price; a tie goes to the lower strike (the module's
+    ec.atm_strike). None when no strike is listed for both a put and a call."""
+    strikes = set(strikes)
+    return ec.atm_strike(price, strikes) if strikes else None
 
 
 def shorts(put_strikes, call_strikes, price, straddle):
-    puts = [k for k in put_strikes if k <= price - straddle]
-    calls = [k for k in call_strikes if k >= price + straddle]
-    return (max(puts) if puts else None), (min(calls) if calls else None)
+    """The module's ec.short_strikes, so a strike exactly one straddle away counts the
+    same way here as in the live build (with its float tolerance)."""
+    return ec.short_strikes(price, straddle, list(put_strikes), list(call_strikes))
 
 
 # ---------------------------------------------------------------- contracts
@@ -260,6 +270,10 @@ def contracts(events, bars_dir):
             todo += 1
             continue
         atm = atm_strike(set(puts) & set(calls), price)
+        if atm is None:
+            print("  no strike listed for both a put and a call; re-save round 1")
+            todo += 1
+            continue
         atm_ids = {"atm_put": puts[atm], "atm_call": calls[atm]}
         missing = [i for i in atm_ids.values() if close_on(bars.get(i, []), ev["entry_date"]) is None]
         if missing:
@@ -296,6 +310,8 @@ def contracts(events, bars_dir):
 def build_event(ev, price, rclose, puts, calls, bars, p):
     """The first width that passes ROI and sizing at the entry-day closes, or (None, reasons)."""
     atm = atm_strike(set(puts) & set(calls), price)
+    if atm is None:
+        return None, ["no strike listed for both a put and a call; re-save round 1"]
     ap, ac = bars.get(puts[atm], []), bars.get(calls[atm], [])
     ap_c, ac_c = close_on(ap, ev["entry_date"]), close_on(ac, ev["entry_date"])
     if ap_c is None or ac_c is None:

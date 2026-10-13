@@ -79,9 +79,13 @@ class Calendar(unittest.TestCase):
         self.assertEqual([c["symbol"] for c in picked], ["MS"])
         self.assertEqual((picked[0]["reaction_day"], picked[0]["timing"], picked[0]["price"]), (WED, "am", 190.01))
         reasons = {s["symbol"]: s["reason"] for s in skipped}
+        # Only names any version of this calendar file holds (large banks reporting 10/13-10/14)
+        # are pinned; every other skip must carry one of the known reasons.
         self.assertIn("already reported", reasons["JPM"])
-        self.assertIn("not verified", reasons["PNFP"])
         self.assertIn("no price", reasons["BAC"])
+        known = ("already reported", "not verified", "timing unknown", "no price", "below 10", "pm report tomorrow")
+        for s in skipped:
+            self.assertTrue(any(k in s["reason"] for k in known), s)
         # Without a prices file every verified am-tomorrow / pm-today name qualifies.
         picked, _ = ec.candidates(reports, TUE)
         self.assertIn("BAC", [c["symbol"] for c in picked])
@@ -94,6 +98,9 @@ class Calendar(unittest.TestCase):
         self.assertEqual(picked, [])
         self.assertIn("below 10", skipped[0]["reason"])
         self.assertIn("timing unknown", skipped[1]["reason"])
+        unverified = [{"symbol": "TENT", "report_date": WED, "timing": "am", "verified": False}]
+        picked, skipped = ec.candidates(unverified, TUE)
+        self.assertEqual((picked, skipped[0]["reason"]), ([], "report date not verified"))
 
 
 class Expiration(unittest.TestCase):
@@ -319,7 +326,7 @@ class LiveMSFixture(unittest.TestCase):
         self.assertAlmostEqual(s, self.book[("call", EXP, 190.0)].mid + self.book[("put", EXP, 190.0)].mid, places=4)
         self.assertLessEqual(o["short_put"]["strike"], 190.01 - s)
         self.assertGreaterEqual(o["short_call"]["strike"], 190.01 + s)
-        self.assertEqual(o["short_put"]["strike"] + 2.5, ec.short_strikes(190.01, s, ec.listed_strikes(self.book, "put", EXP))[0] + 2.5)
+        self.assertEqual(o["short_put"]["strike"], ec.short_strikes(190.01, s, ec.listed_strikes(self.book, "put", EXP))[0])
         self.assertEqual([w["width"] for w in o["widths"]][:3], [1.0, 2.0, 2.5])
         for w in o["widths"]:
             self.assertTrue(w["ok"] or w["failed"], w)
@@ -328,12 +335,7 @@ class LiveMSFixture(unittest.TestCase):
             if "mid_credit" in w:
                 self.assertLessEqual(w["limit_credit"], w["mid_credit"] + 1e-9)
                 self.assertEqual(w["limit_credit"], ec.round_down_tick(w["mid_credit"], self.chain.ticks))
-        if o["condor"]:
-            c = o["condor"]
-            self.assertLessEqual(c["risk"] * c["qty"], 250.0)
-            self.assertLessEqual(c["short_put"], 190.01 - s)
-            self.assertGreaterEqual(c["short_call"], 190.01 + s)
-            self.assertEqual((c["short_put"] - c["long_put"], c["long_call"] - c["short_call"]), (c["width"], c["width"]))
+        self.assertIsNone(o["condor"])        # the default build is NO TRADE; see test_monday_close_values
 
     def test_monday_close_values(self):
         """Pins the numbers in the saved quotes: ATM 190, straddle 8.25, shorts 180/200;
@@ -357,6 +359,14 @@ class LiveMSFixture(unittest.TestCase):
         self.assertEqual((c["short_put"], c["long_put"], c["short_call"], c["long_call"], c["credit"], c["qty"]),
                          (180.0, 177.5, 200.0, 202.5, 0.65, 1))
         self.assertLessEqual(c["max_loss"], 250.0)
+        s = loose["straddle"]
+        self.assertLessEqual(c["risk"] * c["qty"], 250.0)
+        self.assertLessEqual(c["short_put"], 190.01 - s)
+        self.assertGreaterEqual(c["short_call"], 190.01 + s)
+        self.assertEqual((c["short_put"] - c["long_put"], c["long_call"] - c["short_call"]), (c["width"], c["width"]))
+        # Tick, floor and second order come with the condor: 0.65 is under the $3 cutoff -> 0.01 tick;
+        # floor = max(0.9 x 0.65, 2.5 x 0.35 / 1.35) = 0.648.. -> 0.65 rounded up, so no second order.
+        self.assertEqual((c["tick"], c["ticks"]["cutoff_price"], c["floor_credit"], c["second_price"]), (0.01, 3.0, 0.65, 0.65))
 
 
 class Scorer(unittest.TestCase):
@@ -489,6 +499,350 @@ class CLI(unittest.TestCase):
                                "--quotes", os.path.join(FIX, "ms_quotes_2026-10-16_puts.json"))
         self.assertEqual(rc, 1)
         self.assertIn("NO TRADE: Data check failed: 0 option chains for ZZZ", out)
+
+
+
+def cap_book():
+    """Price 100, straddle 4.00 -> shorts 96/104 (mid 0.50), $1 wings 95/105 (mid 0.31):
+    mid credit 0.38, limit 0.38, risk $62, qty 4 = $248; one tick down (0.37) is $63."""
+    return mk_book([("call", 100, 1.95, 2.05, 0.50, 1000, 500), ("put", 100, 1.95, 2.05, -0.50, 1000, 500),
+                    ("put", 96, 0.49, 0.51, -0.20, 500, 100), ("call", 104, 0.49, 0.51, 0.20, 500, 100),
+                    ("put", 95, 0.30, 0.32, -0.15, 500, 100), ("call", 105, 0.30, 0.32, 0.15, 500, 100)])
+
+
+def write_json(d, name, obj):
+    path = os.path.join(d, name)
+    with open(path, "w") as f:
+        json.dump(obj, f)
+    return path
+
+
+class SecondOrder(unittest.TestCase):
+    """Findings: build emits tick, floor credit and a second price sized so the $250 cap
+    holds at the second price too."""
+
+    def test_round_up_and_one_tick_below(self):
+        self.assertEqual(ec.round_up_tick(0.341, TICKS), 0.35)
+        self.assertEqual(ec.round_up_tick(0.34, TICKS), 0.34)
+        self.assertEqual(ec.round_up_tick(3.01, TICKS), 3.05)
+        self.assertEqual(ec.one_tick_below(3.00, TICKS), 2.99)
+        self.assertEqual(ec.one_tick_below(3.10, TICKS), 3.05)
+        self.assertEqual(ec.tick_for(2.99, TICKS), 0.01)
+        self.assertEqual(ec.tick_for(3.00, TICKS), 0.05)
+
+    def test_floor_credit(self):
+        self.assertEqual(ec.floor_credit(0.38, 1.0, TICKS), 0.35)    # max(0.342, 0.2593) -> 0.35
+        self.assertEqual(ec.floor_credit(0.70, 2.5, TICKS), 0.65)    # max(0.63, 0.6481) -> 0.65
+        self.assertEqual(ec.second_price(0.38, 0.35, TICKS), 0.37)
+        self.assertEqual(ec.second_price(0.65, 0.65, TICKS), 0.65)   # one tick down breaches the floor
+
+    def test_second_qty_keeps_the_250_cap(self):
+        out = ec.build("X", 100.0, TUE, WED, "am", CHAIN, cap_book())
+        self.assertEqual(out["decision"], "TRADE", out["reason"])
+        c = out["condor"]
+        self.assertEqual((c["width"], c["credit"], c["risk"], c["qty"], c["max_loss"]), (1.0, 0.38, 62.0, 4, 248.0))
+        self.assertEqual((c["tick"], c["floor_credit"], c["second_price"]), (0.01, 0.35, 0.37))
+        self.assertEqual((c["second_risk"], c["second_qty"], c["second_max_loss"]), (63.0, 3, 189.0))
+        self.assertGreater((1.0 - 0.37) * 100 * c["qty"], 250.0)     # the same qty at 0.37 would breach
+        self.assertEqual(out["ticks"], {"below_tick": 0.01, "above_tick": 0.05, "cutoff_price": 3.0})
+
+    def test_build_human_output_prints_tick_floor_second(self):
+        with tempfile.TemporaryDirectory() as d:
+            argv = self._cli_files(d)
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = ec.main(argv)
+        self.assertEqual(rc, 0)
+        self.assertIn("tick 0.01  floor credit 0.35  second order 0.37 x 3", buf.getvalue())
+
+    def _cli_files(self, d):
+        book = cap_book()
+        chain = {"data": {"chains": [{"id": "c1", "symbol": "X", "expiration_dates": [EXP.isoformat()],
+                                      "min_ticks": {"above_tick": "0.05", "below_tick": "0.01", "cutoff_price": "3.00"}}]}}
+        ins = {"data": {"instruments": [{"id": l.id, "chain_symbol": "X", "expiration_date": EXP.isoformat(),
+                                         "strike_price": f"{l.strike:.4f}", "type": l.kind, "state": "active",
+                                         "tradability": "tradable"} for l in book.values()]}}
+        qs = {"data": {"results": [{"quote": {"instrument_id": l.id, "bid_price": str(l.bid), "ask_price": str(l.ask),
+                                              "delta": str(l.delta), "open_interest": l.open_interest,
+                                              "volume": l.volume}} for l in book.values()]}}
+        return ["build", "--symbol", "X", "--price", "100", "--date", "2026-10-13", "--report-date", "2026-10-14",
+                "--timing", "am", "--chain", write_json(d, "chain.json", chain),
+                "--instruments", write_json(d, "ins.json", ins), "--quotes", write_json(d, "q.json", qs)]
+
+
+class InputRobustness(unittest.TestCase):
+    def run_cli(self, *argv):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = ec.main(list(argv))
+        return rc, buf.getvalue()
+
+    EXIT = ["exit", "--date", "2026-10-14", "--reaction-day", "2026-10-14", "--expiration", "2026-10-16",
+            "--credit", "0.36", "--buyback", "0.09", "--json"]
+
+    def test_exit_time_one_digit_hour_and_bad_input(self):
+        rc, out = self.run_cli(*self.EXIT, "--time", "9:41")
+        self.assertEqual((rc, json.loads(out)["action"]), (0, "CLOSE_ALL"))
+        rc, out = self.run_cli("exit", "--time", "9.41", *self.EXIT[1:])
+        self.assertEqual(rc, 1)
+        self.assertTrue(out.startswith("NO TRADE: Data check failed: time '9.41' is not HH:MM"), out)
+        argv = list(self.EXIT)
+        argv[2] = "10/14/2026"
+        rc, out = self.run_cli(*argv, "--time", "09:41")
+        self.assertEqual(rc, 1)
+        self.assertIn("is not YYYY-MM-DD", out)
+
+    def test_missing_file_error_response_and_bad_moves_print_no_trade(self):
+        base = ["build", "--symbol", "MS", "--price", "190.01", "--date", "2026-10-13", "--report-date", "2026-10-14",
+                "--timing", "am", "--instruments", os.path.join(FIX, "ms_instruments_2026-10-16_puts.json"),
+                "--quotes", os.path.join(FIX, "ms_quotes_2026-10-16_puts.json")]
+        rc, out = self.run_cli(*base, "--chain", "/nonexistent.json")
+        self.assertEqual(rc, 1)
+        self.assertIn("NO TRADE: Data check failed: cannot read /nonexistent.json", out)
+        with tempfile.TemporaryDirectory() as d:
+            err = write_json(d, "err.json", {"data": {"error": "rate limited"}})
+            rc, out = self.run_cli("candidates", "--calendar", err, "--date", "2026-10-13")
+            self.assertEqual(rc, 1)
+            self.assertIn("has no 'results' (has: error)", out)
+            notjson = os.path.join(d, "bad.json")
+            with open(notjson, "w") as f:
+                f.write("{not json")
+            rc, out = self.run_cli(*base, "--chain", notjson)
+            self.assertIn("is not JSON", out)
+        rc, out = self.run_cli(*base, "--chain", os.path.join(FIX, "ms_chain_2026-10-13.json"), "--history-moves", "1.2,abc")
+        self.assertEqual(rc, 1)
+        self.assertIn("--history-moves '1.2,abc' is not a comma-separated list", out)
+        self.assertNotIn("Traceback", out)
+
+    def test_main_turns_unexpected_errors_into_no_trade(self):
+        with tempfile.TemporaryDirectory() as d:
+            bad = write_json(d, "cal.json", {"data": {"results": [{"symbol": "X", "report": {"date": "2026-10-14", "timing": "am"}},
+                                                                   {"report": {"date": "2026-10-14"}}]}})
+            rc, out = self.run_cli("candidates", "--calendar", bad, "--date", "2026-10-13")
+        self.assertEqual(rc, 1)
+        self.assertTrue(out.startswith("NO TRADE: Data check failed: KeyError"), out)
+
+    def test_null_quote_entries_are_ignored(self):
+        with open(os.path.join(FIX, "ms_quotes_2026-10-16_puts.json")) as f:
+            raw = json.load(f)
+        data = raw.get("data", raw)
+        data["results"] += [{"quote": None, "close": None}, None, {"quote": {"instrument_id": None}}]
+        with tempfile.TemporaryDirectory() as d:
+            q = write_json(d, "q.json", raw)
+            book = ec.load_book([os.path.join(FIX, "ms_instruments_2026-10-16_puts.json")], [q], "MS")
+        self.assertEqual(book[("put", EXP, 190.0)].bid, 3.85)
+
+    def test_prices_accepts_several_files(self):
+        with tempfile.TemporaryDirectory() as d:
+            other = write_json(d, "p2.json", {"data": {"results": [{"quote": {"symbol": "BAC", "last_trade_price": "45.10"}}]}})
+            ms = os.path.join(FIX, "ms_equity_quote_2026-10-13.json")
+            self.assertEqual(ec.load_prices([ms, other]), {"MS": 190.01, "BAC": 45.10})
+            rc, out = self.run_cli("candidates", "--calendar", os.path.join(FIX, "earnings_calendar_2026-10-13.json"),
+                                   "--date", "2026-10-13", "--prices", ms, other, "--json")
+        self.assertEqual(rc, 0)
+        picked = [c["symbol"] for c in json.loads(out)["candidates"]]
+        self.assertIn("MS", picked)
+        self.assertIn("BAC", picked)
+
+    def test_score_event_missing_keys_are_data_errors(self):
+        with self.assertRaisesRegex(ec.DataError, "event missing width"):
+            ec.score_event({"entry_date": "2026-10-13", "reaction_day": "2026-10-14"}, {})
+        with tempfile.TemporaryDirectory() as d:
+            events = write_json(d, "events.json", [{"symbol": "NOW", "entry_date": "2026-10-13", "reaction_day": "2026-10-14"}])
+            os.mkdir(os.path.join(d, "bars"))
+            rc, out = self.run_cli("score", "--events", events, "--bars", os.path.join(d, "bars"), "--json")
+        self.assertEqual(rc, 0)
+        j = json.loads(out)
+        self.assertEqual((j["errors"][0]["symbol"], j["errors"][0]["error"]), ("NOW", "event missing width"))
+
+
+class WingQuoteLabel(unittest.TestCase):
+    def test_listed_but_unquoted_wing_is_named_quote(self):
+        book = ladder_book()
+        lp = book[("put", EXP, 95.0)]
+        lp.bid = lp.ask = None
+        out = ec.build("X", 100.0, TUE, WED, "am", CHAIN, book)
+        checks = {f["check"] for f in out["widths"][0]["failed"]}
+        self.assertIn("quote", checks)
+        self.assertNotIn("listed", checks)
+        self.assertIn("pull the quote", out["widths"][0]["failed"][0]["detail"])
+        self.assertEqual({f["check"] for f in out["widths"][1]["failed"]}, {"listed"})   # $2 truly unlisted
+
+    def test_unquoted_short_leg_says_pull_its_quote(self):
+        book = ladder_book()
+        book[("put", EXP, 96.0)].bid = None
+        out = ec.build("X", 100.0, TUE, WED, "am", CHAIN, book)
+        self.assertIn("listed but has no quote loaded", out["reason"])
+
+
+class VerifiedReport(unittest.TestCase):
+    REPORTS = [{"symbol": "X", "report_date": WED, "timing": "am", "verified": True},
+               {"symbol": "T", "report_date": WED, "timing": "am", "verified": False}]
+
+    def test_build_with_reports_requires_verified_matching_report(self):
+        ok = ec.build("X", 100.0, TUE, WED, "am", CHAIN, ladder_book(), reports=self.REPORTS)
+        self.assertEqual((ok["decision"], ok["report_verified"]), ("TRADE", True))
+        for sym, rd, timing, msg in (("T", WED, "am", "not verified"), ("Z", WED, "am", "not in the earnings file"),
+                                     ("X", THU, "am", "not 2026-10-15"), ("X", WED, "pm", "timing is 'am'")):
+            out = ec.build(sym, 100.0, TUE, rd, timing, CHAIN, ladder_book(), reports=self.REPORTS)
+            self.assertEqual(out["decision"], "NO TRADE")
+            self.assertIn(msg, out["reason"])
+
+    def test_cli_build_calendar(self):
+        base = ["build", "--symbol", "MS", "--price", "190.01", "--date", "2026-10-13", "--report-date", "2026-10-15",
+                "--timing", "am", "--chain", os.path.join(FIX, "ms_chain_2026-10-13.json"),
+                "--instruments", os.path.join(FIX, "ms_instruments_2026-10-16_puts.json"),
+                "--quotes", os.path.join(FIX, "ms_quotes_2026-10-16_puts.json"),
+                "--calendar", os.path.join(FIX, "earnings_calendar_2026-10-13.json"), "--json"]
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            ec.main(base)
+        self.assertIn("reports on 2026-10-14 in the earnings file, not 2026-10-15", json.loads(buf.getvalue())["reason"])
+
+
+class HalfDayAndUnknownCredit(unittest.TestCase):
+    def test_half_day_close(self):
+        at = lambda h, m: dt.datetime.combine(D(2026, 11, 27), dt.time(h, m))
+        rd, exp = D(2026, 11, 27), D(2026, 12, 4)
+        hold = ec.exit_decision(at(12, 29), rd, exp, None, {"credit": 0.36}, 0.50, close=dt.time(13, 0))
+        self.assertEqual(hold["action"], "HOLD")
+        out = ec.exit_decision(at(12, 30), rd, exp, None, {"credit": 0.36}, 0.50, close=dt.time(13, 0))
+        self.assertEqual((out["action"], out["final"]), ("CLOSE_ALL", "12:30"))
+        self.assertEqual(ec.exit_decision(at(12, 45), rd, exp, None, {"credit": 0.36}, 0.50)["action"], "HOLD")
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            ec.main(["exit", "--time", "12:45", "--date", "2026-11-27", "--reaction-day", "2026-11-27",
+                     "--expiration", "2026-12-04", "--credit", "0.36", "--buyback", "0.50", "--close", "13:00"])
+        self.assertTrue(buf.getvalue().startswith("CLOSE_ALL"), buf.getvalue())
+
+    def test_unknown_credit(self):
+        now = dt.datetime.combine(WED, dt.time(10, 0))
+        out = ec.exit_decision(now, WED, EXP, None, {"credit": None}, 0.01)
+        self.assertEqual(out["action"], "HOLD")
+        self.assertIn("credit unknown", out["reason"])
+        late = ec.exit_decision(dt.datetime.combine(WED, dt.time(15, 30)), WED, EXP, None, {}, None)
+        self.assertEqual(late["action"], "CLOSE_ALL")
+        flagged = ec.exit_decision(dt.datetime.combine(THU, dt.time(10, 0)), WED, EXP, None, {"credit": 0.4}, 0.3)
+        self.assertEqual((flagged["action"], flagged["flag"]), ("CLOSE_ALL", "still open after the reaction day; should not happen"))
+
+
+class Moves(unittest.TestCase):
+    def test_history_moves_am_pm_and_skips(self):
+        closes = {D(2026, 1, 5): 100.0, D(2026, 1, 6): 103.0, D(2026, 1, 7): 103.0, D(2026, 1, 8): 99.91,
+                  D(2026, 4, 1): 50.0, D(2026, 4, 2): 51.0}
+        reports = [{"symbol": "X", "report_date": D(2026, 1, 6), "timing": "am", "verified": True},    # 100 -> 103: 3%
+                   {"symbol": "X", "report_date": D(2026, 1, 7), "timing": "pm", "verified": True},    # 103 -> 99.91: 3%
+                   {"symbol": "X", "report_date": D(2026, 3, 2), "timing": "am", "verified": True},    # no bar
+                   {"symbol": "X", "report_date": D(2026, 4, 1), "timing": None, "verified": True},    # no timing
+                   {"symbol": "X", "report_date": D(2026, 4, 2), "timing": "pm", "verified": True},    # no next bar
+                   {"symbol": "X", "report_date": D(2026, 10, 14), "timing": "am", "verified": True}]  # not past
+        out = ec.history_moves(reports, closes, TUE, "X")
+        self.assertEqual([m["move_pct"] for m in out["moves"]], [3.0, 3.0])
+        self.assertEqual(out["history_moves"], "3.0000,3.0000")
+        self.assertEqual(sorted(s["reason"].split(" ")[0] for s in out["skipped"]), ["no", "no", "report"])
+        self.assertIn("2 of the last 4 reports measured; 3 skipped", out["note"])
+
+    def test_moves_cli_on_ms_fixtures(self):
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = ec.main(["moves", "--results", os.path.join(FIX, "ms_earnings_results_2026-10-13.json"),
+                          "--bars", os.path.join(FIX, "ms_equity_historicals_2026-10-13.json"),
+                          "--symbol", "MS", "--date", "2026-10-13", "--json"])
+        self.assertEqual(rc, 0)
+        j = json.loads(buf.getvalue())
+        self.assertEqual(j["history_moves"], "4.7058,5.7805,4.5162,0.3865")
+        self.assertEqual([m["timing"] for m in j["moves"]], ["am"] * 4)
+        h = ec.history_filter([float(x) for x in j["history_moves"].split(",")], 4.3419)
+        self.assertEqual((h["applied"], h["within"], h["ok"]), (True, 1, False))
+
+    def test_tradingview_bars(self):
+        with tempfile.TemporaryDirectory() as d:
+            t = lambda y, m, dd: int(dt.datetime(y, m, dd, 9, 30, tzinfo=ec.ET).timestamp())
+            tv = write_json(d, "tv.json", {"symbol": "NYSE:X", "bars": [{"t": t(2026, 1, 5), "c": 100.0}, {"t": t(2026, 1, 6), "c": 98.0}]})
+            self.assertEqual(ec.load_daily_closes(tv, "X"), {D(2026, 1, 5): 100.0, D(2026, 1, 6): 98.0})
+            with self.assertRaisesRegex(ec.DataError, "holds NYSE:X, not MS"):
+                ec.load_daily_closes(tv, "MS")
+
+
+class Buyback(unittest.TestCase):
+    def legs(self, long_bid=0.0):
+        mk = lambda kind, k, bid, ask: ec.Leg(f"{kind}{k}", "X", EXP, k, kind, bid, ask, ticks=TICKS)
+        return [mk("put", 96.0, 0.08, 0.10), mk("call", 104.0, 0.04, 0.06)], [mk("put", 95.0, long_bid, 0.02), mk("call", 105.0, 0.0, 0.01)]
+
+    def test_zero_long_bid_counts_as_zero(self):
+        shorts, longs = self.legs()
+        natural, mid = ec.closing_debits(shorts, longs)
+        self.assertEqual((natural, mid), (0.16, 0.125))              # 0.10 + 0.06 - 0 - 0; 0.09 + 0.05 - 0.01 - 0.005
+        p = ec.closing_prices(natural, mid, TICKS, previous=0.12)
+        self.assertEqual((p["first_price"], p["reprice"], p["final_price"]), (0.13, 0.13, 0.17))
+        self.assertEqual(ec.closing_prices(natural, mid, TICKS, previous=0.13)["reprice"], 0.14)
+
+    def test_missing_quotes_and_short_without_ask(self):
+        shorts, longs = self.legs(long_bid=None)
+        with self.assertRaisesRegex(ec.DataError, "no quote loaded"):
+            ec.closing_debits(shorts, longs)
+        shorts, longs = self.legs()
+        shorts[0].ask = 0.0
+        with self.assertRaisesRegex(ec.DataError, "short put 96 .* has no ask"):
+            ec.closing_debits(shorts, longs)
+
+    def test_reprice_never_above_natural_and_ticks_above_cutoff(self):
+        p = ec.closing_prices(3.20, 3.02, TICKS, previous=3.15)
+        self.assertEqual((p["first_price"], p["reprice"], p["final_price"], p["tick"]), (3.05, 3.20, 3.25, 0.05))
+
+    def test_buyback_cli_on_ms_fixtures(self):
+        ids = ec.build("MS", 190.01, TUE, WED, "am", ec.load_chain(os.path.join(FIX, "ms_chain_2026-10-13.json"), "MS"),
+                       ec.load_book([os.path.join(FIX, f"ms_instruments_2026-10-16_{k}.json") for k in ("puts", "calls")],
+                                    [os.path.join(FIX, f"ms_quotes_2026-10-16_{k}.json") for k in ("puts", "calls")], "MS"))["widths"][2]["ids"]
+        argv = ["buyback", "--quotes", *[os.path.join(FIX, f"ms_quotes_2026-10-16_{k}.json") for k in ("puts", "calls")],
+                "--instruments", *[os.path.join(FIX, f"ms_instruments_2026-10-16_{k}.json") for k in ("puts", "calls")],
+                "--short", ids["short_put"], ids["short_call"], "--long", ids["long_put"], ids["long_call"],
+                "--credit", "0.65", "--time", "9:41", "--date", "2026-10-14", "--reaction-day", "2026-10-14",
+                "--expiration", "2026-10-16", "--json"]
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = ec.main(argv)
+        self.assertEqual(rc, 0)
+        j = json.loads(buf.getvalue())
+        self.assertEqual((j["natural_debit"], j["mid_debit"], j["first_price"], j["final_price"]), (0.84, 0.655, 0.66, 0.85))
+        self.assertEqual((j["decision"]["action"], j["decision"]["buyback_cost"]), ("HOLD", 0.84))
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            rc = ec.main(argv[:-11] + ["--time", "09:41", "--json"])
+        self.assertEqual(rc, 1)
+        self.assertIn("--time, --date, --reaction-day and --expiration together", buf.getvalue())
+
+
+class Rank(unittest.TestCase):
+    def test_rank_by_roi_then_natural_then_symbol(self):
+        mk = lambda sym, roi, nat: {"symbol": sym, "decision": "TRADE", "condor": {
+            "roi": roi, "natural_credit": nat, "width": 1.0, "credit": 0.4, "qty": 4, "max_loss": 240.0, "expiration": "2026-10-16"}}
+        builds = [mk("B", 0.5, 0.30), mk("A", 0.5, 0.30), mk("C", 0.5, 0.35), mk("D", 0.6, 0.10),
+                  {"symbol": "E", "decision": "NO TRADE", "condor": None, "reason": "no width passed"}]
+        out = ec.rank(builds)
+        self.assertEqual([r["symbol"] for r in out["ranked"]], ["D", "C", "A", "B"])
+        self.assertEqual((out["pick"], out["no_trade"]), ("D", [{"symbol": "E", "reason": "no width passed"}]))
+        with tempfile.TemporaryDirectory() as d:
+            paths = [write_json(d, f"{b['symbol']}.json", b) for b in builds]
+            buf = io.StringIO()
+            with contextlib.redirect_stdout(buf):
+                rc = ec.main(["rank", *paths])
+            self.assertEqual(rc, 0)
+            self.assertTrue(buf.getvalue().startswith("PICK: D"))
+            empty = ec.rank([builds[-1]])
+            self.assertIsNone(empty["pick"])
+
+
+class ResearchCheckHelpers(unittest.TestCase):
+    def test_atm_and_shorts_reuse_the_module(self):
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "research"))
+        import earnings_condor_check as chk
+        self.assertIsNone(chk.atm_strike(set([95.0]) & set([100.0]), 97.0))
+        self.assertEqual(chk.atm_strike({95.0, 100.0}, 97.5), 95.0)
+        # Straddle as a float sum of two closes (0.1 + 0.2 = 0.30000000000000004): 99.7 is exactly one straddle away.
+        self.assertEqual(chk.shorts([99.5, 99.7], [100.3, 100.5], 100.0, 0.1 + 0.2), (99.7, 100.3))
+        self.assertEqual(chk.build_event({}, 100.0, None, {95.0: "p"}, {100.0: "c"}, {}, ec.Params()),
+                         (None, ["no strike listed for both a put and a call; re-save round 1"]))
 
 
 if __name__ == "__main__":
