@@ -209,3 +209,15 @@ python3 -m unittest discover -s tests
 
 To refresh the TradingView data, use `get_ohlcv` (1D, 1h and 15m, 5000 bars) and convert it with
 `python3 research/tv_to_csv.py <tool-results dir> research/data`.
+
+## Earnings iron condor (from the Swing Trading & ER course)
+
+`earnings_condor_replay.py` replays the course's earnings condor on real 2026 Robinhood option closes saved in
+`data/earnings_condor_2026/`. Result: 24 condors, 12 wins, profit factor 0.39, total -$875.
+See `../COURSE-EVALUATION.md` and `../AUTOMATION-PLAN.md`.
+
+```
+python3 research/earnings_condor_replay.py
+python3 research/earnings_condor_replay.py --dates research/data/earnings_condor_2026/earnings_dates.json \
+    --ohlcv research/data/earnings_condor_2026/ohlcv
+```
