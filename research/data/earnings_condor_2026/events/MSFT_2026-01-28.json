@@ -1,0 +1,4038 @@
+{
+ "symbol": "MSFT",
+ "report_date": "2026-01-28",
+ "timing": "pm",
+ "entry_date": "2026-01-28",
+ "reaction_day": "2026-01-29",
+ "expiration": "2026-01-30",
+ "expiration_note": "first Friday on/after reaction_day (2026-01-30) had listed instruments; used as-is; instrument list is first page only (further-OTM strikes above 640.0 omitted, not needed)",
+ "entry_close": 481.63,
+ "reaction_close": 433.5,
+ "atm_strike": 482.5,
+ "atm_put_id": "8a4be359-cf21-4f1c-b3fa-0f3e9c961394",
+ "atm_call_id": "2148f6de-164d-4c86-b79b-1986898820f0",
+ "straddle": 25.73,
+ "short_put": 455.0,
+ "short_call": 507.5,
+ "instruments": {
+  "puts": [
+   {
+    "id": "ef6196c2-d5e4-499b-b0af-afd01edc5838",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "270.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2a987fd4-5db2-4a33-9718-6c728982591f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "280.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f0eb3add-3fcd-4942-910e-934a99d46044",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "290.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "76ebf4c3-5b4b-4ea0-912f-46cbbd954a10",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "300.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "382c7430-4cd4-48d7-9533-9baca5de4391",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "310.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "254c882c-6072-48f8-8b46-2a401d51e523",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "320.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "438948af-f228-4d03-b4f8-62eb946c9b2f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "325.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b9e95a6a-2886-4e51-929c-4f2e8cd79315",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "330.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5dec9594-8c36-4dcb-8b0f-a8c824d8cb0c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "335.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d4da96f1-a4fa-48c8-b833-9ac5c64fd7d8",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "340.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ae73696a-0a25-4147-8c49-7e8f65692acf",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "345.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5c9d2022-9fc4-4c93-8f04-1b0172585a32",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "350.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a7f4e241-4550-4477-a540-0953e0ad996f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "355.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "27786ba7-d322-46e2-9604-f4b194cf3501",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "360.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "59efe2fe-6fc3-4af2-b01d-3fd459d835a3",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "365.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1a50d810-368b-47de-b24b-ccbfd2127d54",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "370.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6479853c-d4e3-4e8c-8b17-520b8989b4b6",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "375.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "94515446-f124-4cdb-a046-81df0c331f84",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "380.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "16df3505-792f-4f4a-966b-bc607a2ca171",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "385.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bc0a6dd6-d434-4b61-9f75-0bd673eab9f3",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "390.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1b451aca-0df9-470c-81b0-d762e936dff0",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "392.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "687dccc1-f0b8-4aba-b45a-31108a5b45d7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "395.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "826bb1e0-f3c8-40a8-8a21-9e8a987891da",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "397.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8061aad7-81d0-4b30-9046-bbac6712bbee",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "400.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f3f4ef7c-534d-4c63-b67a-e28ce10655b9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "402.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6984b1a7-e796-411a-8eea-980022560867",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "405.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "43280268-be4d-41b2-a029-c567b2a04976",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "407.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ce4fe46a-bc07-45f0-823c-500e7b0c3595",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "410.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2d1f0603-01fc-4254-9e35-6a79808358f5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "412.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ad6ccc56-f5fa-49da-b70c-ec36a00753bf",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "415.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6ae86dbf-9215-4705-bf42-1de9c3790b71",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "417.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "87a442ff-833f-434a-9b36-1103b0b68f3d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "420.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ce1faa10-c1ab-469a-be4c-890128efe786",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "422.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1db131ec-bb5d-42d9-b932-6d4c6f406f19",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "425.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6b27af4f-4078-476b-99c1-e7115fbc78c7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "427.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5aa3d292-ad4c-46bc-a1c4-fa8334306a18",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "430.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d32b5011-67b8-4bfe-b98d-cf0cc8942477",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "432.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "4c33d088-9c5d-48ac-b762-7933968542e4",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "435.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "7dea44df-afd3-45b9-8fdd-359f840cd58f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "437.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5f86dd7e-01a4-4b39-a8a9-c961e1ac5928",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "440.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "dfced2e2-6467-4f4e-ab30-29c669b9233a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "442.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "96d78d2a-cc09-4701-8f63-15eb97e69080",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "445.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "494c1d00-07c7-4418-9a6e-357e5e035686",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "447.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b60ceb54-4862-48e2-9c28-18255a5743f4",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "450.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b443cfa6-c2bb-4297-9dbd-a533efd392c4",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "452.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9485cf9d-2f58-44b3-adb8-eed0f210e733",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "455.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "71dc4876-f6cb-4717-ae9f-57dd52bbd770",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "457.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "295dad2a-adf8-4836-a9fa-73d3b1f89e65",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "460.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "21a4798d-ee08-4a98-9607-33a3fb3ee0d9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "462.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "e7a21878-0a05-443f-b4e9-ca2f92959125",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "465.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "0ca455ef-c868-4c64-a7e6-982c4c3acb5a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "467.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3b50de1a-04b8-4305-9a9e-7aedcd103817",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "470.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f992b6ac-22ce-4454-bfe6-20d3aaddbb35",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "472.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d70f74cb-7956-4574-95ed-02e94f72c381",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "475.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ff0dbc34-c57a-46d5-ab2f-c20e47f0064e",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "477.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2c4414f2-60c7-4fe6-b495-0ca1bc448896",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "480.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8a4be359-cf21-4f1c-b3fa-0f3e9c961394",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "482.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "afc16d9e-68b7-4b0f-a261-7eed7944ef72",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "485.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d440fe18-b7c6-4f29-8f08-9dd2dda13e39",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "487.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5e5779ef-9074-46b4-9de5-12ee858b70b6",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "490.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "47ab9bd4-d817-4fdb-9142-9a2876655c36",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "492.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "72f4d6fc-858a-409e-bfc1-070d57dcd707",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "495.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "c4a0aae0-5b97-4bb2-84e5-a1ad5eb7da49",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "497.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "88de9898-2c99-468a-87e2-341757ca824c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "500.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "7d7bb86d-5b7a-4345-a580-491fa3a69414",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "502.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8f6b63f6-5ef1-4688-86ba-b64220e13203",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "505.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "33b60981-b1d0-459a-bf94-76a434375b39",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "507.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8eea58ec-fc5f-4858-afc5-557b1429cbba",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "510.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "011b32e7-598f-46e9-9cea-4d543dc6506b",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "512.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "02da6df2-b1ac-442e-9692-f7858790b696",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "515.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "319e1709-0d5a-4866-8820-3a63cd454f6a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "517.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2309c00c-26e0-4e66-b809-0391f8ef3e09",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "520.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "7737fbe2-09d7-4656-ac91-eeeb44bddc96",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "522.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2fcafee2-64de-435b-a55b-e669b6e99ba7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "525.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6e4c821b-a03f-4f4b-a5ec-1d969eb4f65a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "527.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5a74d208-8834-453c-bf11-1161bb9c3bd3",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "530.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d40ad557-ba0a-4205-9507-0ed37e2be9f9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "532.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1d05320d-4b11-4df4-a8d8-16700a8a592e",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "535.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1d8ea9ef-858e-4539-b6a4-c8c3f80f22fd",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "537.5000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "de73045e-7609-44e3-bf2a-a5e7920a537f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "540.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8a3b161d-a37c-4e0a-a2a3-31b875e51bc0",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "545.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "11db6dd1-a7d3-4788-84c5-590d8d843c38",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "550.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "885a033b-a46c-4c96-a8d2-d2789a3e961d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "555.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f025564e-502a-4d3a-8fb4-ac3a18ea8c6c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "560.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f39d6c42-b4ab-4440-bf82-fb1b0f7fff90",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "565.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b5347afc-2d74-40fd-86d9-4f15bbef3fca",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "570.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b614744b-2b20-4ccb-a72e-5b69a6eeb526",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "575.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "0263b256-8fa0-4d07-a999-c08ce2503537",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "580.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "0c22cee1-d74f-4f20-899e-42a4dde091a7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "585.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "212213cd-feb5-422e-bdbd-7390f06c06bb",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "590.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a5b5cb41-aa4b-4747-899d-5a04183f8f5a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "595.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d464ec1a-a004-4e46-9467-341da0550bba",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "600.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "48224fc3-e8fb-49f6-b133-0044d284c23c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "605.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "58176100-95d9-45fc-85c2-e999533adfc4",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "610.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bd4fd256-4641-427e-81b2-d78060c8b19a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "615.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bd1a34cb-4a7e-4339-a6fd-39fc7c74063c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "620.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bee94f20-3299-4b4a-8b0c-7d048bb39340",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "625.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8dc8d7da-3023-4b50-af9a-689b3cfbbc11",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "630.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a3fe718d-1336-47be-b4ae-b7fbfbc4486b",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "635.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "75627226-6001-4fb3-8333-efd61e9e96a3",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "640.0000",
+    "type": "put",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   }
+  ],
+  "calls": [
+   {
+    "id": "c5d8324b-b677-483d-bb21-7c07df17a7b9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "270.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "dfbcf00c-f4b4-41ec-a708-a95dd05c5cec",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "280.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "391c9b88-a3dd-49dd-a9b1-ffd86489799a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "290.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "56427e97-82f9-4b23-9c82-616911ae16d1",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "300.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5b8a69f8-768b-4120-9e65-6df4502e6bcb",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "310.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "c45a8edd-039a-463d-80d9-dfd7220330c7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "320.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1e9b5839-5448-41e4-baa2-f1ef656be592",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "325.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "c7fd5d53-588a-4489-ac11-e2832a9614d7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "330.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9b013c63-89d3-4cc5-bf67-9c29844faa25",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "335.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "dd837af8-1e18-4fa4-be9e-d0e5371d5a68",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "340.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d1929d6c-3b52-4d9a-86d3-081e1395a7b5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "345.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9a30bbef-baee-46af-9416-4d6efc5b5ce5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "350.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "016b5b26-2677-4e20-8570-258c9d119f31",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "355.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "22bedda5-6722-4cf1-baa3-5192610f6fc9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "360.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1745aebb-d032-4677-9b82-1f51cb96f1a5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "365.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "e6c92880-a911-4be0-a00d-9e171e5bc54f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "370.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bbb42fe4-c433-42d8-9cd1-7fab5f81956c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "375.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ad920b18-d67a-4c32-b85b-2334e18f2c47",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "380.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9d8df446-2e4b-433e-9311-bc98ba4acb20",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "385.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "694df9d8-c9f0-4ff4-8490-c91cba494394",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "390.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "596196cf-9e64-4ea5-9c7b-c0eaf80eedb2",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "392.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ce911540-f6a4-402f-94e6-af05a09de26b",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "395.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9fd8a2c8-83cc-441e-a0d1-6b1a8ea2f70e",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "397.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6fc4fb7c-f92e-44d6-8bd5-0480f5f64fac",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "400.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "cda53bb0-c243-4088-a49c-ea738bbc1107",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "402.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ad73cd03-6c6c-46cd-b5ec-389cdf7b4027",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "405.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a886f045-f7b4-4a6a-8acf-a63a5933bd5a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "407.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "fb81fde0-3592-4639-ad7d-5028dd0a14e7",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "410.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "416376d0-7410-4bc1-a4ff-ebc97fd5be5e",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "412.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f693ef24-6040-4180-b4d6-07c01e9bc7ff",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "415.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "eee20460-8a89-452e-a15d-ee4c4085b372",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "417.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3ea59c75-5e60-4c01-b37e-e39b52957b29",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "420.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "02526d1b-667b-401c-863d-c949adad8f7b",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "422.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1a9adeab-4533-4ff4-af82-089c578bc468",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "425.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f7e2e996-48f7-42e6-b5d6-e5b307a61697",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "427.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5865f2b4-cda0-439e-9785-2de52763101c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "430.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "16eaf6cc-0b10-406f-abf4-bedf6a4bcce8",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "432.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "7ceeeccf-0354-4e25-b783-0b85ce8d87f5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "435.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "44ece48e-1779-461e-a5fa-90a41c7c0f89",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "437.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "99ece596-9395-45b5-912d-788aefc77a3d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "440.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f4f5b18f-fd60-4fa7-a6c6-52b801257dde",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "442.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "dae9cc5c-0a73-423e-b198-850bdceac1b9",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "445.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5987edb0-32d6-4e82-b75b-c0a11eec07e5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "447.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "73c059f4-3499-4b35-8cb4-b014c46606a5",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "450.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "083994aa-9cde-4552-9de9-7e74203b4714",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "452.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "11d5100b-2974-4fca-975e-ae0d99cffeff",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "455.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3351cb91-b25c-4705-a32c-899aa796818f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "457.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "c845dc29-f435-4420-b549-4afd7f6e9d97",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "460.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b8361fbe-012e-458e-9de3-7cfaff54fa41",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "462.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "fe383036-053f-42f0-9297-f9a5e0a51516",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "465.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "8bf23cff-4c57-41be-ac0d-f2367076a77c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "467.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "932855c2-6769-47da-93de-dc244b899cdb",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "470.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "39b60c5b-bd95-43bc-8b4a-4cffd7e9c744",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "472.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "6c92edf5-59c6-491e-a67c-95d74021511d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "475.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "47ac2f62-0721-4ede-993b-0a2af772cb6e",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "477.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "ba5f2ffe-2d2d-4d22-bd52-8e0e9a822ecc",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "480.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "2148f6de-164d-4c86-b79b-1986898820f0",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "482.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "c51fcdc4-5280-4739-9e92-ddc8b5474f51",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "485.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1674e665-1f48-41f3-a820-6c1973816e8f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "487.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "0c371088-128d-442b-a476-1932cb5fc710",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "490.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "474efee0-c05e-450d-993d-ae9c77574fd1",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "492.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "45c50025-574c-4d65-8d12-de9b8f5288ca",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "495.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3e741bd6-e692-43d0-b874-40a662b1047c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "497.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "957bd260-2b72-49f6-ae16-39304036d0fd",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "500.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "94fc9f1d-4db1-4cf2-a960-fc3419874e1d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "502.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "24963497-b0c8-4122-aac7-8b767241ee71",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "505.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "63edec08-d32d-42f7-b1c5-cbf126088600",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "507.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "1f7066af-ff1d-466e-bcbc-4cac65702c02",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "510.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "23fabab2-4562-455b-bf39-b08d5e4a07de",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "512.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "caadf8a5-92eb-4932-8588-0cc315c7b89c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "515.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "eac73f60-5a2a-4a5e-bc24-0ac4be1b6eae",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "517.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d131c58a-b1f7-477e-a5d1-752deb739898",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "520.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3b060c99-b796-4ef7-96f2-b856e0605f5f",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "522.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "004d47c6-2e38-4779-9c42-85e3e482d01b",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "525.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9f92cd8a-41e3-40fd-aba2-54e8b6324d93",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "527.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f9a94ba6-cadd-4ddb-96aa-10b8a2dc5bed",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "530.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a1ef9acf-a87e-484a-ae00-a4e57b0eb9bd",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "532.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9a3b10ca-fbb4-44f8-afbc-1233f0d4e208",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "535.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "10e7181c-f21e-45f5-8bbd-c71c744d5c55",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "537.5000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "92194dcd-2e4e-4d45-9a3e-fa2d297f3982",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "540.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "a1982a58-7fc4-47df-b2e1-221bff72c571",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "545.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b8433078-b2a8-403a-8180-8ffd097cc25d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "550.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "3b299e70-51b0-4b1c-b0d2-db44fb9e6023",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "555.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "bacdf996-684c-454f-8b40-b19363020e69",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "560.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "83dc00cf-5343-4558-b005-86b74d970fb6",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "565.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "133433ea-9b06-41f0-b273-4b932f065183",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "570.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "49fa90a4-2fdb-4d89-90b5-22af83d7b7b2",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "575.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "480b302b-6094-48c4-b5a0-2748e52806b0",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "580.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "9fc8d8b3-16a2-465b-922d-4242ea103197",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "585.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "da865627-5c4e-460a-b54b-3ec3010e3d95",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "590.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "d70affc6-e173-4bd5-98a0-964d609d7d84",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "595.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "05ff984a-ec1f-45e9-bdbf-4894f181cc5d",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "600.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "b988f094-cbc6-4ac6-928f-22ad0635334a",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "605.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5bb6762d-30bb-4cae-b976-e95538f24e82",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "610.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "5de2b766-44b8-45fe-92b1-3f72fb642cfe",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "615.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f1dc673c-57ff-4e9a-9ce1-c4df98e8e964",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "620.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "f97f5479-6309-4542-81e8-0792e0003b2c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "625.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "06af82da-9285-48c7-b227-c45fe85cc4e4",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "630.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "51e8f2fd-a794-44e2-a0a7-5f1b7a6fe550",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "635.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   },
+   {
+    "id": "84560a5f-ef32-410a-9b38-9d287414200c",
+    "chain_id": "1ac71e01-0677-42c6-a490-1457980954f8",
+    "chain_symbol": "MSFT",
+    "underlying_type": "equity",
+    "expiration_date": "2026-01-30",
+    "sellout_datetime": "2026-01-30T20:30:00+00:00",
+    "strike_price": "640.0000",
+    "type": "call",
+    "state": "expired",
+    "tradability": "untradable",
+    "trade_value_multiplier": "100.0000",
+    "min_ticks": {
+     "above_tick": "0.05",
+     "below_tick": "0.01",
+     "cutoff_price": "3.00"
+    }
+   }
+  ]
+ },
+ "historicals": [
+  {
+   "data": {
+    "results": [
+     {
+      "instrument_id": "8a4be359-cf21-4f1c-b3fa-0f3e9c961394",
+      "occ_symbol": "MSFT  260130P00482500",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "23.180000",
+        "high_price": "25.150000",
+        "low_price": "16.530000",
+        "close_price": "19.080000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "17.080000",
+        "high_price": "17.080000",
+        "low_price": "11.850000",
+        "close_price": "13.150000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "13.650000",
+        "high_price": "14.680000",
+        "low_price": "12.200000",
+        "close_price": "13.180000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "51.200000",
+        "high_price": "61.650000",
+        "low_price": "47.350000",
+        "close_price": "49.280000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "43.600000",
+        "high_price": "55.180000",
+        "low_price": "43.280000",
+        "close_price": "52.730000",
+        "session": "reg"
+       }
+      ]
+     },
+     {
+      "instrument_id": "2148f6de-164d-4c86-b79b-1986898820f0",
+      "occ_symbol": "MSFT  260130C00482500",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "5.980000",
+        "high_price": "8.650000",
+        "low_price": "5.000000",
+        "close_price": "7.080000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "8.150000",
+        "high_price": "12.400000",
+        "low_price": "8.100000",
+        "close_price": "11.450000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "12.530000",
+        "high_price": "13.230000",
+        "low_price": "10.050000",
+        "close_price": "12.550000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "0.010000",
+        "high_price": "0.120000",
+        "low_price": "0.010000",
+        "close_price": "0.070000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "0.030000",
+        "high_price": "0.030000",
+        "low_price": "0.010000",
+        "close_price": "0.010000",
+        "session": "reg"
+       }
+      ]
+     }
+    ]
+   },
+   "guide": "Bars are left-edge labeled in UTC; convert to the user's timezone for presentation. Treat interpolated=true bars as gap-fill \u2014 they carry no new information and should usually be hidden in charts and ignored for analytics. Option bars carry no volume. close_price on the most recent bar is NOT the official settled close \u2014 use get_option_quotes for the current mark and the official prior-session close. For a multi-bar move, compute the return from the first bar's open_price to the last bar's close_price. Each entry in results is keyed by instrument_id; requested ids that did not resolve are listed in not_found. When the request omitted interval, the 'interval' field on each result reports what the server auto-selected."
+  },
+  {
+   "data": {
+    "results": [
+     {
+      "instrument_id": "9485cf9d-2f58-44b3-adb8-eed0f210e733",
+      "occ_symbol": "MSFT  260130P00455000",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "7.700000",
+        "high_price": "8.850000",
+        "low_price": "4.450000",
+        "close_price": "5.500000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "4.550000",
+        "high_price": "4.550000",
+        "low_price": "2.680000",
+        "close_price": "3.350000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "2.900000",
+        "high_price": "4.300000",
+        "low_price": "2.520000",
+        "close_price": "3.480000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "16.550000",
+        "high_price": "33.980000",
+        "low_price": "14.250000",
+        "close_price": "21.630000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "16.150000",
+        "high_price": "28.530000",
+        "low_price": "15.430000",
+        "close_price": "24.700000",
+        "session": "reg"
+       }
+      ]
+     },
+     {
+      "instrument_id": "b443cfa6-c2bb-4297-9dbd-a533efd392c4",
+      "occ_symbol": "MSFT  260130P00452500",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "7.700000",
+        "high_price": "7.730000",
+        "low_price": "3.800000",
+        "close_price": "4.730000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "3.880000",
+        "high_price": "3.900000",
+        "low_price": "2.260000",
+        "close_price": "2.860000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "2.470000",
+        "high_price": "3.780000",
+        "low_price": "2.450000",
+        "close_price": "3.020000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "14.450000",
+        "high_price": "31.580000",
+        "low_price": "12.100000",
+        "close_price": "19.250000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "13.780000",
+        "high_price": "26.250000",
+        "low_price": "13.530000",
+        "close_price": "21.800000",
+        "session": "reg"
+       }
+      ]
+     },
+     {
+      "instrument_id": "b60ceb54-4862-48e2-9c28-18255a5743f4",
+      "occ_symbol": "MSFT  260130P00450000",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "5.880000",
+        "high_price": "6.830000",
+        "low_price": "3.250000",
+        "close_price": "4.050000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "3.300000",
+        "high_price": "3.300000",
+        "low_price": "1.880000",
+        "close_price": "2.420000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "2.220000",
+        "high_price": "3.350000",
+        "low_price": "2.070000",
+        "close_price": "2.620000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "19.550000",
+        "high_price": "29.100000",
+        "low_price": "15.980000",
+        "close_price": "16.830000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "11.530000",
+        "high_price": "23.530000",
+        "low_price": "11.250000",
+        "close_price": "19.800000",
+        "session": "reg"
+       }
+      ]
+     }
+    ]
+   },
+   "guide": "Bars are left-edge labeled in UTC; convert to the user's timezone for presentation. Treat interpolated=true bars as gap-fill \u2014 they carry no new information and should usually be hidden in charts and ignored for analytics. Option bars carry no volume. close_price on the most recent bar is NOT the official settled close \u2014 use get_option_quotes for the current mark and the official prior-session close. For a multi-bar move, compute the return from the first bar's open_price to the last bar's close_price. Each entry in results is keyed by instrument_id; requested ids that did not resolve are listed in not_found. When the request omitted interval, the 'interval' field on each result reports what the server auto-selected."
+  },
+  {
+   "data": {
+    "results": [
+     {
+      "instrument_id": "63edec08-d32d-42f7-b1c5-cbf126088600",
+      "occ_symbol": "MSFT  260130C00507500",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "1.310000",
+        "high_price": "2.360000",
+        "low_price": "1.290000",
+        "close_price": "1.790000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "2.470000",
+        "high_price": "3.480000",
+        "low_price": "2.190000",
+        "close_price": "3.150000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "3.180000",
+        "high_price": "4.250000",
+        "low_price": "2.520000",
+        "close_price": "4.080000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "0.040000",
+        "high_price": "0.370000",
+        "low_price": "0.020000",
+        "close_price": "0.370000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "0.030000",
+        "high_price": "0.030000",
+        "low_price": "0.010000",
+        "close_price": "0.010000",
+        "session": "reg"
+       }
+      ]
+     },
+     {
+      "instrument_id": "1f7066af-ff1d-466e-bcbc-4cac65702c02",
+      "occ_symbol": "MSFT  260130C00510000",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "1.360000",
+        "high_price": "2.030000",
+        "low_price": "1.070000",
+        "close_price": "1.520000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "1.850000",
+        "high_price": "3.000000",
+        "low_price": "1.800000",
+        "close_price": "2.720000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "3.080000",
+        "high_price": "3.730000",
+        "low_price": "2.160000",
+        "close_price": "3.550000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "0.020000",
+        "high_price": "0.050000",
+        "low_price": "0.010000",
+        "close_price": "0.030000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "0.020000",
+        "high_price": "0.020000",
+        "low_price": "0.010000",
+        "close_price": "0.010000",
+        "session": "reg"
+       }
+      ]
+     },
+     {
+      "instrument_id": "23fabab2-4562-455b-bf39-b08d5e4a07de",
+      "occ_symbol": "MSFT  260130C00512500",
+      "symbol": "MSFT",
+      "interval": "day",
+      "bounds": "regular",
+      "bars": [
+       {
+        "begins_at": "2026-01-26T00:00:00Z",
+        "open_price": "1.170000",
+        "high_price": "1.750000",
+        "low_price": "0.900000",
+        "close_price": "1.310000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-27T00:00:00Z",
+        "open_price": "1.930000",
+        "high_price": "2.580000",
+        "low_price": "1.570000",
+        "close_price": "2.350000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-28T00:00:00Z",
+        "open_price": "2.300000",
+        "high_price": "3.230000",
+        "low_price": "1.820000",
+        "close_price": "3.100000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-29T00:00:00Z",
+        "open_price": "0.020000",
+        "high_price": "0.060000",
+        "low_price": "0.020000",
+        "close_price": "0.020000",
+        "session": "reg"
+       },
+       {
+        "begins_at": "2026-01-30T00:00:00Z",
+        "open_price": "0.010000",
+        "high_price": "0.010000",
+        "low_price": "0.010000",
+        "close_price": "0.010000",
+        "session": "reg"
+       }
+      ]
+     }
+    ]
+   },
+   "guide": "Bars are left-edge labeled in UTC; convert to the user's timezone for presentation. Treat interpolated=true bars as gap-fill \u2014 they carry no new information and should usually be hidden in charts and ignored for analytics. Option bars carry no volume. close_price on the most recent bar is NOT the official settled close \u2014 use get_option_quotes for the current mark and the official prior-session close. For a multi-bar move, compute the return from the first bar's open_price to the last bar's close_price. Each entry in results is keyed by instrument_id; requested ids that did not resolve are listed in not_found. When the request omitted interval, the 'interval' field on each result reports what the server auto-selected."
+  }
+ ]
+}
